@@ -5,10 +5,10 @@ import Users from '../components/users/Users';
 class UsersContainer extends Component {
   render() {
     return (
-      <div>
+      <>
         <UserForm />
         <Users />
-      </div>
+      </>
     );
   }
 }
