@@ -2,8 +2,8 @@
 .login {
   background: url(../images/undraw_tasting_de22.svg) no-repeat center center
     fixed;
-  -webkit-background-size: cover;
+  /* -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
 }
