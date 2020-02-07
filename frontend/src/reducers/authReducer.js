@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loginStatus: 'LOGGED_IN',
-        user: action.payload
+        user: action.user
       };
     case 'LOGOUT_USER':
       console.log('logout user action:', action);
