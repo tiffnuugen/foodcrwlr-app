@@ -38,8 +38,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  username: state.user.username,
-  loginStatus: state.loginStatus
+  username: state.authReducer.user.username,
+  loginStatus: state.authReducer.loginStatus
 });
 
 const mapDispatchToProps = (dispatch) => ({
