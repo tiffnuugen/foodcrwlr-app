@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get :restaurants, to: 'restaurants#search'
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
   delete :logout, to: 'sessions#logout'
