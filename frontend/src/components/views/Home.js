@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import RestaurantForm from '../restaurants/RestaurantForm';
 
 class Home extends Component {
   constructor(props) {
@@ -51,17 +52,7 @@ class Home extends Component {
     return (
       <menu className='ui secondary massive menu'>
         <h1>FoodCrwlr</h1>
-        <div className='ui fluid category search'>
-          <div className='ui icon input'>
-            <input
-              className='prompt'
-              type='text'
-              placeholder='Search restaurants...'
-            />
-            <i className='search icon'></i>
-          </div>
-          <div className='results'></div>
-        </div>
+        <RestaurantForm />
         <div className='right menu'>
           <div className='ui dropdown item'>
             {this.props.username} <i className='dropdown icon'></i>
