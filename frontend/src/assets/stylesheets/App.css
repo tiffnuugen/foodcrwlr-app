@@ -47,21 +47,27 @@
 }
 
 /* menu */
-.ui.secondary.menu {
-  margin: 1rem;
-  padding: 0;
+.ui.massive.secondary.menu {
+  margin: 2rem;
 }
 
-/* right menu*/
+/* right menu */
 .ui.menu:not(.vertical) .right.menu {
   margin-left: 0 !important;
 }
 
 /* search bar */
-.ui.fluid.category.search {
+.search.form.container,
+.ui.circular.icon.button {
   margin: auto;
 }
 
-.ui.icon.input {
-  width: 40rem;
+/* search input */
+.ui.input {
+  width: 30rem;
+}
+
+/* restaurants container */
+.restaurants.container {
+  margin: 0rem 2rem 0rem 2rem;
 }
