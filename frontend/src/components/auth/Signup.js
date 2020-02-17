@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import '../../assets/stylesheets/Signup.css';
 
-import { Route, Redirect, Link } from 'react-router-dom';
+import { Button, Form, Card, Container } from 'semantic-ui-react';
+import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Signup extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: '',
-      password: '',
-      passwordConfirmation: '',
-      signupErrors: '',
-      redirect: false
-    };
-  }
+  state = {
+    username: '',
+    password: '',
+    passwordConfirmation: '',
+    signupErrors: '',
+    redirect: false
+  };
 
   handleChange = (e) => {
     this.setState({
@@ -46,7 +43,7 @@ class Signup extends Component {
           });
         }
       })
-      .catch((error) => error);
+      .catch((error) => console.log(error.response));
     this.setState({
       username: '',
       password: '',
@@ -56,66 +53,50 @@ class Signup extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to='/home' />;
+      return <Redirect to='/' />;
     }
-    console.log('signup:', this);
     return (
-      <form
-        className='signup ui center aligned container'
-        onSubmit={this.handleSubmit}
-      >
-        <div className='ui centered card'>
-          <div className='content'>
-            <div className='ui form'>
-              <div className='field'>
-                <label>Username</label>
-                <div className='ui left icon input'>
-                  <input
-                    type='username'
-                    name='username'
-                    placeholder='Username'
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                  />
-                  <i className='user icon'></i>
-                </div>
-              </div>
-              <div className='field'>
-                <label>Password</label>
-                <div className='ui left icon input'>
-                  <input
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                  />
-                  <i className='lock icon'></i>
-                </div>
-              </div>
-              <div className='field'>
-                <label>Password Confirmation</label>
-                <div className='ui left icon input'>
-                  <input
-                    type='password'
-                    name='passwordConfirmation'
-                    placeholder='Password Confirmation'
-                    value={this.state.passwordConfirmation}
-                    onChange={this.handleChange}
-                  />
-                  <i className='lock icon'></i>
-                </div>
-              </div>
-              <button type='submit' className='ui primary button'>
-                Sign up
-              </button>
+      <Container className='signup' textAlign='center'>
+        <Card centered={true}>
+          <Card.Content>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Input
+                icon='user'
+                iconPosition='left'
+                label='Username'
+                placeholder='Username'
+                name='username'
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+              <Form.Input
+                icon='lock'
+                iconPosition='left'
+                label='Password'
+                type='password'
+                placeholder='Password'
+                name='password'
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <Form.Input
+                icon='lock'
+                iconPosition='left'
+                label='Password Confirmation'
+                type='password'
+                placeholder='Password Confirmation'
+                name='passwordConfirmation'
+                value={this.state.passwordConfirmation}
+                onChange={this.handleChange}
+              />
+              <Button type='submit' content='Sign up' primary />
               <p>
                 Already a user? <Link to='/login'>Log in</Link> here.
               </p>
-            </div>
-          </div>
-        </div>
-      </form>
+            </Form>
+          </Card.Content>
+        </Card>
+      </Container>
     );
   }
 }

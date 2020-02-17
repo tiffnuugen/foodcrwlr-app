@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import '../../assets/stylesheets/Login.css';
 
-import { Link, Redirect, Route } from 'react-router-dom';
+import { Button, Form, Card, Container } from 'semantic-ui-react';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-// import Home from '../views/Home';
-
 class Login extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: '',
-      password: '',
-      loginErrors: '',
-      redirect: false
-    };
-  }
+  state = {
+    username: '',
+    password: '',
+    loginErrors: '',
+    redirect: false
+  };
 
   handleChange = (e) => {
     this.setState({
@@ -46,7 +41,7 @@ class Login extends Component {
           });
         }
       })
-      .catch((error) => error);
+      .catch((error) => console.log(error.response));
     this.setState({
       username: '',
       password: ''
@@ -55,56 +50,40 @@ class Login extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to='/home' />;
+      return <Redirect to='/' />;
     }
     return (
-      <form
-        className='login ui center aligned container'
-        onSubmit={this.handleSubmit}
-      >
-        <div className='ui centered card'>
-          <div className='content'>
-            <div className='ui form'>
-              <div className='field'>
-                <label>Username</label>
-                <div className='ui left icon input'>
-                  <input
-                    type='username'
-                    name='username'
-                    placeholder='Username'
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                  />
-                  <i className='user icon'></i>
-                </div>
-              </div>
-              <div className='field'>
-                <label>Password</label>
-                <div className='ui left icon input'>
-                  <input
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                  />
-                  <i className='lock icon'></i>
-                </div>
-              </div>
-              <button type='submit' className='ui primary button'>
-                Log in
-              </button>
+      <Container className='login' textAlign='center'>
+        <Card centered={true}>
+          <Card.Content>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Input
+                icon='user'
+                iconPosition='left'
+                label='Username'
+                placeholder='Username'
+                name='username'
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+              <Form.Input
+                icon='lock'
+                iconPosition='left'
+                label='Password'
+                type='password'
+                placeholder='Password'
+                name='password'
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <Button type='submit' content='Log in' primary />
               <p>
                 New to App? <Link to='/signup'>Sign up</Link> here.
               </p>
-              {/* <div class='ui bottom attached warning message'>
-                <i class='icon help'></i>
-                New to App? <Link to='/signup'>Sign up</Link> here.
-              </div> */}
-            </div>
-          </div>
-        </div>
-      </form>
+            </Form>
+          </Card.Content>
+        </Card>
+      </Container>
     );
   }
 }
