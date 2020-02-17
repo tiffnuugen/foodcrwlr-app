@@ -23,6 +23,13 @@ class Home extends Component {
           this.props.loginStatus === 'LOGGED_IN'
         ) {
           this.props.logoutUser();
+        } else if (
+          !res.data.logged_in &&
+          this.props.loginStatus === 'NOT_LOGGED_IN'
+        ) {
+          this.setState({
+            redirect: true
+          });
         }
       })
       .catch((error) => error);
