@@ -57,25 +57,13 @@ class Home extends Component {
     }
     console.log('home:', this);
     return (
-      <menu className='ui secondary massive menu'>
-        <h1>FoodCrwlr</h1>
-        <RestaurantForm />
-        <div className='right menu'>
-          <div className='ui dropdown item'>
-            {this.props.username} <i className='dropdown icon'></i>
-            <div className='menu'>
-              <a className='item'>My Restaurants</a>
-              <a className='item'>My Reviews</a>
-              <a className='item'>My Friends</a>
-            </div>
-          </div>
-          <div className='item'>
-            <button onClick={() => this.handleLogout()} className='ui button'>
-              Logout
-            </button>
-          </div>
-        </div>
-      </menu>
+      <>
+        <NavBar
+          username={this.props.username}
+          handleLogout={this.handleLogout}
+        />
+        <RestaurantsContainer />
+      </>
     );
   }
 }
