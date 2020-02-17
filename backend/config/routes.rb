@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get :restaurants, to: 'restaurants#search'
-  resources :sessions, only: [:create]
-  resources :registrations, only: [:create]
-  delete :logout, to: 'sessions#logout'
-  get :logged_in, to: 'sessions#logged_in'
   root to: "static#home"
+  get :logged_in, to: 'sessions#logged_in'
+  get :restaurants, to: 'restaurants#search'
+  resources :sessions, only: [:index, :create]
+  resources :registrations, only: [:index, :create]
+  delete :logout, to: 'sessions#logout'
 end
