@@ -7,10 +7,10 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+class Home extends Component {
+  state = {
       redirect: false
     };
-  }
 
   checkLoginStatus = () => {
     axios
