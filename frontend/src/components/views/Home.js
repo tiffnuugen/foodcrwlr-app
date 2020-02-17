@@ -68,4 +68,8 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  username: state.authReducer.user.username
+});
+
+export default connect(mapStateToProps)(Home);
