@@ -1,21 +1,84 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Search, Button } from 'semantic-ui-react';
+
+import { fetchRestaurants } from '../../actions/apiActions';
 
 class RestaurantForm extends Component {
+  state = {
+    term: '',
+    location: ''
+  };
+
+  handleSearchChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.fetchRestaurants({
+      term: this.state.term,
+      location: this.state.location
+    });
+    this.setState({
+      term: '',
+      location: ''
+    });
+  };
+
+  // componentDidMount() {
+  //   this.props.fetchRestaurants(this.state);
+  // }
+
+  // if the current loading state is
+  // NOT equal to the previous loading state,
+  // then UPDATE the page with the searched restaurants
+  // componentDidUpdate(prevProps, prevState) {
+  //   // console.log(prevState);
+  //   if (this.state !== prevState) {
+  //     this.props.fetchRestaurants(this.state);
+  //   }
+  // }
+
   render() {
     return (
-      <form className='ui fluid category search'>
-        <div className='ui icon input'>
-          <input
-            className='prompt'
-            type='text'
-            placeholder='Search restaurants...'
-          />
-          <i className='search icon'></i>
-        </div>
-        <div className='results'></div>
+      <form className='search form container' onSubmit={this.handleSubmit}>
+        <Search
+          fluid
+          icon={null}
+          name='term'
+          placeholder='Search restaurants...'
+          showNoResults={false}
+          value={this.state.term}
+          onSearchChange={this.handleSearchChange}
+        />
+        <Search
+          fluid
+          icon={null}
+          name='location'
+          placeholder='near this location...'
+          showNoResults={false}
+          value={this.state.location}
+          onSearchChange={this.handleSearchChange}
+        />
+        {this.props.loading ? (
+          <Button circular size='large' loading icon='user' />
+        ) : (
+          <Button circular size='large' icon='search' />
+        )}
       </form>
     );
   }
 }
 
-export default RestaurantForm;
+const mapStateToProps = (state) => ({
+  loading: state.apiReducer.loading
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchRestaurants: (searchValues) => dispatch(fetchRestaurants(searchValues))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantForm);
