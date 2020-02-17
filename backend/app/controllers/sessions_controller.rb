@@ -1,6 +1,13 @@
 class SessionsController < ApplicationController
   include CurrentUserConcern
 
+  def index
+    users = User.all
+    render json: {
+      users: users
+    }
+  end
+
   def create
     user = User.find_by(username: params['user']['username']).try(:authenticate, params['user']['password'])
     if user
