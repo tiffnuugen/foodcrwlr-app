@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from 'axios';
-import RestaurantForm from '../restaurants/RestaurantForm';
+import { Redirect } from 'react-router-dom';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
+import RestaurantsContainer from '../../containers/RestaurantsContainer';
+import NavBar from './NavBar';
 
 class Home extends Component {
   state = {
-      redirect: false
-    };
+    redirect: false
+  };
 
   checkLoginStatus = () => {
     axios
@@ -48,14 +47,13 @@ class Home extends Component {
           redirect: true
         });
       })
-      .catch((error) => error);
+      .catch((error) => console.log(error.response));
   };
 
   render() {
     if (this.state.redirect) {
       return <Redirect to='/login' />;
     }
-    console.log('home:', this);
     return (
       <>
         <NavBar
