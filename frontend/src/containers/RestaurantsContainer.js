@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import RestaurantForm from '../components/restaurants/RestaurantForm';
+import { connect } from 'react-redux';
+
 import Restaurants from '../components/restaurants/Restaurants';
 
 class RestaurantsContainer extends Component {
   render() {
     return (
-      <>
-        <RestaurantForm />
-        <Restaurants />
-      </>
+      <div className='restaurants container'>
+        <Restaurants restaurants={this.props.restaurants} />
+      </div>
     );
   }
 }
 
-export default RestaurantsContainer;
+const mapStateToProps = (state) => ({
+  restaurants: state.apiReducer.restaurants
+});
+
+export default connect(mapStateToProps)(RestaurantsContainer);
