@@ -32,7 +32,7 @@ class Home extends Component {
           });
         }
       })
-      .catch((error) => error);
+      .catch((error) => console.log(error.response));
   };
 
   componentDidMount() {
