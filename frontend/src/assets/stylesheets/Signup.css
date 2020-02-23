@@ -1,0 +1,9 @@
+/* background image */
+.signup {
+  background: url(../images/undraw_eating_together_tjhx.svg) no-repeat center
+    center fixed;
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+}
