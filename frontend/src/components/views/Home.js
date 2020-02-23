@@ -67,7 +67,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  username: state.authReducer.user.username
+  username: state.auth.user.username
 });
 
 export default connect(mapStateToProps)(Home);

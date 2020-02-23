@@ -12,9 +12,6 @@ export default (state = initialState, action) => {
         loginStatus: 'LOGGED_IN',
         user: action.user
       };
-    case 'LOGOUT_USER':
-      console.log('logout user action:', action);
-      return initialState;
     default:
       return state;
   }

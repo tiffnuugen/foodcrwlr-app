@@ -43,7 +43,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  loginStatus: state.authReducer.loginStatus
+  loginStatus: state.auth.loginStatus
 });
 
 const mapDispatchToProps = (dispatch) => ({

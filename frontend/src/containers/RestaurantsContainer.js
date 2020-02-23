@@ -14,7 +14,7 @@ class RestaurantsContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  restaurants: state.apiReducer.restaurants
+  restaurants: state.api.restaurants
 });
 
 export default connect(mapStateToProps)(RestaurantsContainer);
