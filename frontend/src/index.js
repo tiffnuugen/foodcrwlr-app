@@ -1,24 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import 'semantic-ui-css/semantic.min.css';
 import './assets/stylesheets/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers/rootReducer';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
+import { store, persistor } from './store';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')
