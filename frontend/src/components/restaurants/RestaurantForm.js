@@ -28,20 +28,6 @@ class RestaurantForm extends Component {
     });
   };
 
-  // componentDidMount() {
-  //   this.props.fetchRestaurants(this.state);
-  // }
-
-  // if the current loading state is
-  // NOT equal to the previous loading state,
-  // then UPDATE the page with the searched restaurants
-  // componentDidUpdate(prevProps, prevState) {
-  //   // console.log(prevState);
-  //   if (this.state !== prevState) {
-  //     this.props.fetchRestaurants(this.state);
-  //   }
-  // }
-
   render() {
     return (
       <form className='search form container' onSubmit={this.handleSubmit}>
