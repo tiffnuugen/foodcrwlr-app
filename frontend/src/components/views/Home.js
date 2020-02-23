@@ -31,7 +31,13 @@ class Home extends Component {
           });
         }
       })
-      .catch((error) => console.log(error.response));
+      .catch((error) => {
+        if (error.response.status !== 200) {
+          this.setState({
+            redirect: true
+          });
+        }
+      });
   };
 
   componentDidMount() {
