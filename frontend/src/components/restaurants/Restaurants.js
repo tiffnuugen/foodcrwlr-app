@@ -11,7 +11,7 @@ const Restaurants = ({ restaurants }) => {
           as={Link}
           to={`/restaurants/${restaurant.id}`}
         >
-          <Image src={restaurant.image_url} />
+          <Image src={restaurant.image_url} height={300} />
           <Card.Content>
             <Card.Header>{restaurant.name}</Card.Header>
             <Card.Meta>
