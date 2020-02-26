@@ -1,12 +1,15 @@
 import React from 'react';
 import { Menu, Dropdown, Button, Header } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import RestaurantForm from '../restaurants/RestaurantForm';
 
 const NavBar = ({ username, handleLogout }) => {
   return (
     <Menu secondary size='massive'>
-      <Header size='huge'>FoodCrwlr</Header>
+      <Header size='huge' as={Link} to='/'>
+        FoodCrwlr
+      </Header>
       <RestaurantForm />
       <Menu.Menu position='right'>
         <Dropdown item text={username}>
