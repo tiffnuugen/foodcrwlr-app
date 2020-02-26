@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Search, Button } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
 
 import { fetchRestaurants } from '../../actions/apiActions';
 
@@ -22,6 +23,9 @@ class RestaurantForm extends Component {
       term: this.state.term,
       location: this.state.location
     });
+    this.props.history.push(
+      `/search?term=${this.state.term}&location=${this.state.location}`
+    );
     this.setState({
       term: '',
       location: ''
@@ -67,4 +71,6 @@ const mapDispatchToProps = (dispatch) => ({
   fetchRestaurants: (searchValues) => dispatch(fetchRestaurants(searchValues))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantForm);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(RestaurantForm)
+);
