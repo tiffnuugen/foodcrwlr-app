@@ -67,6 +67,7 @@ class Home extends Component {
         <NavBar
           username={this.props.username}
           handleLogout={this.handleLogout}
+          clearRestaurants={this.props.clearRestaurants}
         />
         <RestaurantsContainer />
       </>
