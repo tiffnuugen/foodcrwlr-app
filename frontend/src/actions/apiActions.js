@@ -19,3 +19,7 @@ export const fetchRestaurants = (searchValues) => {
       .catch((error) => console.log(error.response));
   };
 };
+
+export const clearRestaurants = () => ({
+  type: 'CLEAR_RESTAURANTS'
+});
