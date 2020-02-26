@@ -6,6 +6,8 @@ import { Redirect } from 'react-router-dom';
 import NavBar from './NavBar';
 import RestaurantsContainer from '../../containers/RestaurantsContainer';
 
+import { clearRestaurants } from '../../actions/apiActions';
+
 class Home extends Component {
   state = {
     redirect: false
