@@ -5,28 +5,23 @@ import { Card, Image, Icon } from 'semantic-ui-react';
 const Restaurants = ({ restaurants }) => {
   return (
     <Card.Group itemsPerRow={5}>
-      {restaurants.map((restaurant) => (
-        <Card
-          key={restaurant.id}
-          as={Link}
-          to={`/restaurants/${restaurant.id}`}
-        >
-          <Image src={restaurant.image_url} height={300} />
-          <Card.Content>
-            <Card.Header>{restaurant.name}</Card.Header>
-            <Card.Meta>
-              Price: {restaurant.price === undefined ? 'N/A' : restaurant.price}{' '}
-              | Rating: {restaurant.rating}
-            </Card.Meta>
-          </Card.Content>
-          <Card.Content extra>
-            <Icon name='phone' />
-            {restaurant.display_phone === ''
-              ? 'Not Available'
-              : restaurant.display_phone}
-          </Card.Content>
-        </Card>
-      ))}
+      {restaurants.map(
+        ({ id, image_url, name, price, rating, display_phone }) => (
+          <Card key={id} as={Link} to={`/restaurants/${id}`}>
+            <Image src={image_url} height={300} />
+            <Card.Content>
+              <Card.Header>{name}</Card.Header>
+              <Card.Meta>
+                Price: {price === undefined ? 'N/A' : price} | Rating: {rating}
+              </Card.Meta>
+            </Card.Content>
+            <Card.Content extra>
+              <Icon name='phone' />
+              {display_phone === '' ? 'Not Available' : display_phone}
+            </Card.Content>
+          </Card>
+        )
+      )}
     </Card.Group>
   );
 };
