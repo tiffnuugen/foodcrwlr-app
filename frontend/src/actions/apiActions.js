@@ -6,7 +6,7 @@ export const fetchRestaurants = (searchValues) => {
     dispatch({ type: 'LOADING_RESTAURANTS' });
     axios
       .get(
-        `${corsApiUrl}https://api.yelp.com/v3/businesses/search?categories=restaurants&location=${searchValues.location}&term=${searchValues.term}`,
+        `${corsApiUrl}https://api.yelp.com/v3/businesses/search?categories=restaurants&term=${searchValues.term}&location=${searchValues.location}`,
         {
           headers: {
             Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
