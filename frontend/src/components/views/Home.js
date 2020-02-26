@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
-import RestaurantsContainer from '../../containers/RestaurantsContainer';
 import NavBar from './NavBar';
+import RestaurantsContainer from '../../containers/RestaurantsContainer';
 
 class Home extends Component {
   state = {
