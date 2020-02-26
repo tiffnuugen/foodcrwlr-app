@@ -78,4 +78,8 @@ const mapStateToProps = (state) => ({
   username: state.auth.user.username
 });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => ({
+  clearRestaurants: () => dispatch(clearRestaurants())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
