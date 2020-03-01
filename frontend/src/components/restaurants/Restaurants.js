@@ -2,12 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Image, Icon } from 'semantic-ui-react';
 
-const Restaurants = ({ restaurants }) => {
+const Restaurants = ({ restaurants, showRestaurantDetails }) => {
   return (
     <Card.Group itemsPerRow={5}>
       {restaurants.map(
         ({ id, image_url, name, price, rating, display_phone }) => (
-          <Card key={id} as={Link} to={`/restaurants/${id}`}>
+          <Card
+            key={id}
+            as={Link}
+            to={`/restaurants/${id}`}
+            onClick={() => showRestaurantDetails(id)}
+          >
             <Image src={image_url} height={300} />
             <Card.Content>
               <Card.Header>{name}</Card.Header>
