@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import NavBar from './NavBar';
 import RestaurantsContainer from '../../containers/RestaurantsContainer';
+import Restaurant from '../restaurants/Restaurant';
 
 import { clearRestaurants } from '../../actions/apiActions';
 
@@ -69,7 +70,12 @@ class Home extends Component {
           handleLogout={this.handleLogout}
           clearRestaurants={this.props.clearRestaurants}
         />
-        <RestaurantsContainer />
+        <Route path='/search'>
+          <RestaurantsContainer />
+        </Route>
+        <Route path='/restaurants/:id'>
+          <Restaurant />
+        </Route>
       </>
     );
   }
