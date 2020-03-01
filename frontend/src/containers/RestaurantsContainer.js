@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
 
 import Restaurants from '../components/restaurants/Restaurants';
 import { showRestaurantDetails } from '../actions/apiActions';
