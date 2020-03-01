@@ -6,7 +6,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'LOADING_RESTAURANTS':
-      console.log('restaurants loaded!', action);
+      console.log('restaurants loading...', action);
       return {
         ...state,
         restaurants: [...state.restaurants],
@@ -22,6 +22,10 @@ export default (state = initialState, action) => {
     case 'CLEAR_RESTAURANTS':
       console.log('restaurants cleared!', action);
       return initialState;
+    case 'LOADING_RESTAURANT_DETAILS':
+      console.log('restaurant details loading...', action);
+    case 'SHOW_RESTAURANT_DETAILS':
+      console.log('restaurant details shown!', action);
     default:
       return state;
   }
