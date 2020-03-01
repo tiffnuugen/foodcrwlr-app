@@ -1,5 +1,10 @@
 import React from 'react';
-import { Menu, Dropdown, Button, Header } from 'semantic-ui-react';
+import {
+  Menu,
+  Dropdown,
+  Button,
+  Header as HugeHeader
+} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import RestaurantForm from '../restaurants/RestaurantForm';
@@ -7,9 +12,14 @@ import RestaurantForm from '../restaurants/RestaurantForm';
 const Header = ({ username, handleLogout, clearRestaurants }) => {
   return (
     <Menu secondary size='massive'>
-      <Header size='huge' as={Link} to='/' onClick={() => clearRestaurants()}>
+      <HugeHeader
+        size='huge'
+        as={Link}
+        to='/'
+        onClick={() => clearRestaurants()}
+      >
         FoodCrwlr
-      </Header>
+      </HugeHeader>
       <RestaurantForm />
       <Menu.Menu position='right'>
         <Dropdown item text={username}>
