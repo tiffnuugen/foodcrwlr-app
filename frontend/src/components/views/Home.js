@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Route, Redirect } from 'react-router-dom';
 
-import NavBar from './NavBar';
+import Header from './Header';
 import RestaurantsContainer from '../../containers/RestaurantsContainer';
 import Restaurant from '../restaurants/Restaurant';
 
@@ -65,7 +65,7 @@ class Home extends Component {
     }
     return (
       <>
-        <NavBar
+        <Header
           username={this.props.username}
           handleLogout={this.handleLogout}
           clearRestaurants={this.props.clearRestaurants}
