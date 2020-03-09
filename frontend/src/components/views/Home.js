@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import Header from './Header';
 import RestaurantsContainer from '../../containers/RestaurantsContainer';
-import Restaurant from '../restaurants/Restaurant';
+import RestaurantDetailsContainer from '../../containers/RestaurantDetailsContainer';
 
 import { clearRestaurants } from '../../actions/apiActions';
 
@@ -74,7 +74,7 @@ class Home extends Component {
           <RestaurantsContainer />
         </Route>
         <Route path='/restaurants/:id'>
-          <Restaurant />
+          <RestaurantDetailsContainer />
         </Route>
       </>
     );
