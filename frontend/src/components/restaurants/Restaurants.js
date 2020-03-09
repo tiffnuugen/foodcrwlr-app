@@ -13,7 +13,7 @@ const Restaurants = ({ restaurants, showRestaurantDetails }) => {
             to={`/restaurants/${id}`}
             onClick={() => showRestaurantDetails(id)}
           >
-            <Image src={image_url} height={300} />
+            <Image src={image_url} alt='Not Available' height={300} />
             <Card.Content>
               <Card.Header>{name}</Card.Header>
               <Card.Meta>
