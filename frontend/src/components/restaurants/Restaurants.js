@@ -17,7 +17,8 @@ const Restaurants = ({ restaurants, showRestaurantDetails }) => {
             <Card.Content>
               <Card.Header>{name}</Card.Header>
               <Card.Meta>
-                Price: {price === undefined ? 'N/A' : price} | Rating: {rating}
+                Price: {!price ? 'N/A' : price} | Rating:{' '}
+                {rating % 1 === 0 ? `${rating}.0` : rating}
               </Card.Meta>
             </Card.Content>
             <Card.Content extra>
