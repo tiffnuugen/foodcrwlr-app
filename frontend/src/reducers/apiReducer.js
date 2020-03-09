@@ -1,5 +1,6 @@
 const initialState = {
   restaurants: [],
+  restaurantDetails: {},
   loading: false
 };
 
@@ -24,8 +25,18 @@ export default (state = initialState, action) => {
       return initialState;
     case 'LOADING_RESTAURANT_DETAILS':
       console.log('restaurant details loading...', action);
+      return {
+        ...state,
+        restaurantDetails: { ...state.restaurantDetails },
+        loading: true
+      };
     case 'SHOW_RESTAURANT_DETAILS':
       console.log('restaurant details shown!', action);
+      return {
+        ...state,
+        restaurantDetails: action.restaurant,
+        loading: false
+      };
     default:
       return state;
   }
