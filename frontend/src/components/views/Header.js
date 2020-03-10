@@ -7,7 +7,13 @@ import RestaurantForm from '../restaurants/RestaurantForm';
 const Header = ({ username, handleLogout, clearRestaurants }) => {
   return (
     <Menu secondary size='massive'>
-      <H1 size='huge' as={Link} to='/' onClick={() => clearRestaurants()}>
+      <H1
+        size='huge'
+        color='teal'
+        as={Link}
+        to='/'
+        onClick={() => clearRestaurants()}
+      >
         FoodCrwlr
       </H1>
       <RestaurantForm />
