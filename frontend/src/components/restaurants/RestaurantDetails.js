@@ -78,7 +78,13 @@ const RestaurantDetails = ({
               />
               <Item.Content>
                 <Segment>
-                  <Header size='huge' as='a' href={url} target='_blank'>
+                  <Header
+                    size='huge'
+                    color='teal'
+                    as='a'
+                    href={url}
+                    target='_blank'
+                  >
                     {name}
                   </Header>
                   <Item.Meta>
