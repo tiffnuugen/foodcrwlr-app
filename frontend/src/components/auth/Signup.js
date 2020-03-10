@@ -89,7 +89,9 @@ class Signup extends Component {
                 value={this.state.passwordConfirmation}
                 onChange={this.handleChange}
               />
-              <Button type='submit' content='Sign up' primary />
+              <Button type='submit' color='teal'>
+                Sign up
+              </Button>
               <p>
                 Already a user? <Link to='/login'>Log in</Link> here.
               </p>

@@ -76,7 +76,9 @@ class Login extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-              <Button type='submit' content='Log in' primary />
+              <Button type='submit' color='teal'>
+                Log in
+              </Button>
               <p>
                 New to App? <Link to='/signup'>Sign up</Link> here.
               </p>
