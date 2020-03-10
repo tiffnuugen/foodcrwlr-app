@@ -19,7 +19,6 @@ const Header = ({ username, handleLogout, clearRestaurants }) => {
             <Dropdown.Item>My Friends</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-
         <Menu.Item>
           <Button onClick={() => handleLogout()}>Log out</Button>
         </Menu.Item>
