@@ -24,18 +24,16 @@ const renderHours = (hours) => {
     const endHour = end.slice(0, 2);
     const endMin = end.slice(2);
     let dayOfOperation = '';
-    let hoursOfOperation = '';
+    const hoursOfOperation = `${((parseInt(startHour) + 11) % 12) +
+      1}:${startMin} ${startHour >= 12 ? 'pm' : 'am'} - ${((parseInt(endHour) +
+      11) %
+      12) +
+      1}:${endMin} ${endHour >= 12 ? 'pm' : 'am'}`;
 
     if (currentDay !== day) {
       currentDay = day;
       dayOfOperation = days[day];
     }
-
-    hoursOfOperation += `${((parseInt(startHour) + 11) % 12) + 1}:${startMin} ${
-      startHour >= 12 ? 'pm' : 'am'
-    } - ${((parseInt(endHour) + 11) % 12) + 1}:${endMin} ${
-      endHour >= 12 ? 'pm' : 'am'
-    }`;
 
     return (
       <List.Item key={uuidv4()}>
@@ -72,13 +70,20 @@ const RestaurantDetails = ({
         <Segment>
           <Item.Group>
             <Item>
-              <Image src={image_url} height={300} width={300} />
+              <Image
+                src={image_url}
+                alt='Not Available'
+                height={300}
+                width={300}
+              />
               <Item.Content>
                 <Segment>
                   <Header size='huge' as='a' href={url} target='_blank'>
                     {name}
                   </Header>
-                  <Item.Meta>{categories[0].title} Restaurant </Item.Meta>
+                  <Item.Meta>
+                    {!categories ? 'Not Available' : categories[0].title}
+                  </Item.Meta>
                   <Item.Meta>
                     {!price ? (
                       <strong>N/A</strong>
@@ -92,10 +97,10 @@ const RestaurantDetails = ({
                     |{' '}
                     <strong>{rating % 1 === 0 ? `${rating}.0` : rating}</strong>
                     <Rating
-                      icon='star'
                       size='large'
                       defaultRating={rating}
                       maxRating={5}
+                      disabled
                     />
                   </Item.Meta>
                   <Segment.Group>
@@ -105,11 +110,9 @@ const RestaurantDetails = ({
                         <strong>
                           {!location
                             ? 'Not Available'
-                            : location.display_address[0]}
-                          ,{' '}
-                          {!location
-                            ? 'Not Available'
-                            : location.display_address[1]}
+                            : location.display_address.map(
+                                (item, index) => `${index ? ', ' : ''}${item}`
+                              )}
                         </strong>
                       </Item.Description>
                     </Segment>
@@ -131,11 +134,15 @@ const RestaurantDetails = ({
                     </Segment>
                   </Segment.Group>
                   <Item.Extra>
-                    {categories.map(({ alias }) => (
-                      <Label key={alias} size='large'>
-                        {alias}
-                      </Label>
-                    ))}
+                    {!categories ? (
+                      <Label>Not Available</Label>
+                    ) : (
+                      categories.map(({ alias }) => (
+                        <Label key={alias} size='large'>
+                          {alias}
+                        </Label>
+                      ))
+                    )}
                   </Item.Extra>
                 </Segment>
               </Item.Content>
