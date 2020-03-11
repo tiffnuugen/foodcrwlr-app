@@ -76,3 +76,13 @@
 .restaurant.details.container {
   margin-top: 3rem;
 }
+
+/* save restaurant container */
+.save.restaurant {
+  float: right;
+}
+
+/* save restaurant button */
+button.ui.basic.circular.icon.button {
+  display: flex;
+}

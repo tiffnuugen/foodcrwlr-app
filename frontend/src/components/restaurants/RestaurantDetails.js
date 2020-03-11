@@ -10,7 +10,8 @@ import {
   Icon,
   Segment,
   List,
-  Label
+  Label,
+  Button
 } from 'semantic-ui-react';
 
 const renderHours = (hours) => {
@@ -87,6 +88,10 @@ const RestaurantDetails = ({
                   >
                     {name}
                   </Header>
+                  <div className='save restaurant'>
+                    <Button circular basic icon='bookmark outline' />
+                    <Label size='mini'>Save</Label>
+                  </div>
                   <Item.Meta>
                     {!categories ? 'Not Available' : categories[0].title}
                   </Item.Meta>
