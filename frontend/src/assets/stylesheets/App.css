@@ -74,7 +74,7 @@
 
 /* restaurant details container */
 .restaurant.details.container {
-  margin-top: 3rem;
+  margin: 3rem 3rem;
 }
 
 /* save restaurant container */
@@ -85,4 +85,13 @@
 /* save restaurant button */
 button.ui.basic.circular.icon.button {
   display: flex;
+}
+/* reviews */
+.ui.comments {
+  margin: 1.5em 1.5em;
+}
+
+/* review form */
+form.ui.reply.form {
+  margin-bottom: 4rem;
 }
