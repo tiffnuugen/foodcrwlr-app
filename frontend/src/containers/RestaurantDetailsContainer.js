@@ -13,9 +13,7 @@ class RestaurantDetailsContainer extends Component {
           restaurantDetails={this.props.restaurantDetails}
           loading={this.props.loading}
         />
-        <Divider section horizontal>
-          <Header as='h2'>REVIEWS</Header>
-        </Divider>
+        <Divider section />
         <ReviewsContainer />
       </div>
     );
