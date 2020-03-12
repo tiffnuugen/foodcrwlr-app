@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Header } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 
 import RestaurantDetails from '../components/restaurants/RestaurantDetails';
 import ReviewsContainer from './ReviewsContainer';
