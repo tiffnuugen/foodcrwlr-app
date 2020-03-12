@@ -5,7 +5,7 @@ import Reviews from '../components/reviews/Reviews';
 class ReviewsContainer extends Component {
   render() {
     return (
-      <div className='ui text reviews container'>
+      <div className='reviews container'>
         <Reviews />
       </div>
     );
