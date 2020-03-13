@@ -1,17 +1,27 @@
 import React from 'react';
+import { Comment, Rating } from 'semantic-ui-react';
 
-const Review = () => {
+const Review = ({ text, rating, username }) => {
   return (
     <Comment>
       {/* <Comment.Avatar src='' /> */}
+      <Rating disabled size='large' defaultRating={rating} maxRating={5} />
       <Comment.Content>
-        <Comment.Author as='a'>Matt</Comment.Author>
+        <Comment.Author as='a'>{username}</Comment.Author>
         <Comment.Metadata>
-          <div>Today at 5:42PM</div>
+          <div>
+            {new Date().toLocaleDateString()} at{' '}
+            {new Date().toLocaleTimeString('en-US', {
+              hour: 'numeric',
+              hour12: true,
+              minute: 'numeric'
+            })}
+          </div>
         </Comment.Metadata>
-        <Comment.Text>How artistic!</Comment.Text>
+        <Comment.Text>{text}</Comment.Text>
         <Comment.Actions>
           <Comment.Action>Edit</Comment.Action>
+          <Comment.Action>Delete</Comment.Action>
         </Comment.Actions>
       </Comment.Content>
     </Comment>
