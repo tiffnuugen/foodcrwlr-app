@@ -92,6 +92,10 @@ button.ui.basic.circular.icon.button {
 }
 
 /* review form */
-form.ui.reply.form {
-  margin-bottom: 4rem;
+form.ui.form.review {
+  margin-bottom: 6rem;
+}
+/* add review button */
+button.ui.teal.basic.right.floated.button {
+  margin-top: 0.5rem;
 }
