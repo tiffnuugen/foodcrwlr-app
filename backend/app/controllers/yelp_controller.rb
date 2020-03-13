@@ -1,4 +1,4 @@
-class RestaurantsController < ApplicationController
+class YelpController < ApplicationController
   def search
     res = Faraday.get('https://api.yelp.com/v3/businesses/search') do |req|
       req.headers['Authorization'] = "Bearer #{ENV['API_KEY']}"
