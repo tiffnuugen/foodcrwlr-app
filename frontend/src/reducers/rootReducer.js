@@ -2,10 +2,12 @@ import { combineReducers } from 'redux';
 
 import authReducer from './authReducer';
 import apiReducer from './apiReducer';
+import reviewsReducer from './reviewsReducer';
 
 const appReducer = combineReducers({
   auth: authReducer,
-  api: apiReducer
+  api: apiReducer,
+  reviews: reviewsReducer
 });
 
 const rootReducer = (state, action) => {
