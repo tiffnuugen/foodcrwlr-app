@@ -6,7 +6,10 @@ class ReviewsContainer extends Component {
   render() {
     return (
       <div className='reviews container'>
-        <Reviews />
+        <ReviewForm />
+        <Divider section horizontal>
+          <Header as='h2'>REVIEWS</Header>
+        </Divider>
       </div>
     );
   }
