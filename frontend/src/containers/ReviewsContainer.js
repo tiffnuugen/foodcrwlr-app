@@ -15,9 +15,9 @@ class ReviewsContainer extends Component {
         </Divider>
         <Reviews
           reviews={this.props.reviews}
-          restaurantId={this.props.restaurantId}
           username={this.props.username}
-          userId={this.props.userId}
+          // restaurantId={this.props.restaurantId}
+          // userId={this.props.userId}
         />
       </div>
     );
@@ -26,9 +26,9 @@ class ReviewsContainer extends Component {
 
 const mapStateToProps = (state) => ({
   reviews: state.reviews.reviews,
-  restaurantId: state.api.restaurantDetails.id,
-  username: state.auth.user.username,
-  userId: state.auth.user.id
+  username: state.auth.user.username
+  // restaurantId: state.api.restaurantDetails.id,
+  // userId: state.auth.user.id
 });
 
 export default connect(mapStateToProps)(ReviewsContainer);
