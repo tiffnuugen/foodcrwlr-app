@@ -108,10 +108,10 @@ const RestaurantDetails = ({
                     |{' '}
                     <strong>{rating % 1 === 0 ? `${rating}.0` : rating}</strong>
                     <Rating
+                      disabled
                       size='large'
                       defaultRating={rating}
                       maxRating={5}
-                      disabled
                     />
                   </Item.Meta>
                   <Segment.Group>
