@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
-import {
-  Icon,
-  Comment,
-  Form,
-  Button,
-  Message,
-  Divider,
-  Header
-} from 'semantic-ui-react';
+import { v4 as uuidv4 } from 'uuid';
+import { Comment, Message } from 'semantic-ui-react';
 
-import ReviewForm from './ReviewForm';
+import Review from './Review';
 
 class Reviews extends Component {
   render() {
+    // const reviews = this.props.reviews.filter(
+    //   (review) => review.restaurantId === this.props.restaurantId
+    // );
+    // console.log(reviews);
     return (
       <Comment.Group>
-        <ReviewForm />
-        <Divider section horizontal>
-          <Header as='h2'>REVIEWS</Header>
-        </Divider>
+        {this.props.reviews.map((review) => (
+          <Review
+            key={uuidv4()}
+            text={review.text}
+            rating={review.rating}
+            username={this.props.username}
+          />
+        ))}
         {/* <Message>
           <Message.Header>No Reviews</Message.Header>
           <p>
@@ -26,19 +27,6 @@ class Reviews extends Component {
             one here.
           </p>
         </Message> */}
-        <Comment>
-          {/* <Comment.Avatar src='' /> */}
-          <Comment.Content>
-            <Comment.Author as='a'>Matt</Comment.Author>
-            <Comment.Metadata>
-              <div>Today at 5:42PM</div>
-            </Comment.Metadata>
-            <Comment.Text>How artistic!</Comment.Text>
-            <Comment.Actions>
-              <Comment.Action>Edit</Comment.Action>
-            </Comment.Actions>
-          </Comment.Content>
-        </Comment>
       </Comment.Group>
     );
   }
