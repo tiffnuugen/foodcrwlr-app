@@ -140,7 +140,7 @@ const RestaurantDetails = ({
                     <Segment size='large' textAlign='center' className='phone'>
                       <Icon name='phone' />
                       <strong>
-                        {display_phone === '' ? 'Not Available' : display_phone}
+                        {!display_phone ? 'Not Available' : display_phone}
                       </strong>
                     </Segment>
                   </Segment.Group>
