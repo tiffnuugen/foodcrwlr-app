@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Restaurants from '../components/restaurants/Restaurants';
-import { showRestaurantDetails } from '../actions/apiActions';
+import { showRestaurantDetails } from '../actions/yelpActions';
 
 class RestaurantsContainer extends Component {
   render() {

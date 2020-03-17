@@ -7,7 +7,7 @@ import Header from './Header';
 import RestaurantsContainer from '../../containers/RestaurantsContainer';
 import RestaurantDetailsContainer from '../../containers/RestaurantDetailsContainer';
 
-import { clearRestaurants } from '../../actions/apiActions';
+import { clearRestaurants } from '../../actions/yelpActions';
 
 class Home extends Component {
   state = {

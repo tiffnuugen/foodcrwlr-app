@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Search, Button } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
-import { fetchRestaurants } from '../../actions/apiActions';
+import { fetchRestaurants } from '../../actions/yelpActions';
 
 class RestaurantForm extends Component {
   state = {
