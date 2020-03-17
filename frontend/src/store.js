@@ -10,7 +10,7 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['yelp', 'reviews']
+  whitelist: ['yelp', 'api']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

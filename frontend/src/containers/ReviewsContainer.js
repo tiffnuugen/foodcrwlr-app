@@ -25,7 +25,7 @@ class ReviewsContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  reviews: state.reviews.reviews,
+  reviews: state.api.reviews,
   username: state.auth.user.username
   // restaurantId: state.yelp.restaurantDetails.id,
   // userId: state.auth.user.id
