@@ -18,7 +18,7 @@ class RestaurantsContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  restaurants: state.api.restaurants
+  restaurants: state.yelp.restaurants
 });
 
 const mapDispatchToProps = (dispatch) => ({

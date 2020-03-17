@@ -21,8 +21,8 @@ class RestaurantDetailsContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  restaurantDetails: state.api.restaurantDetails,
-  loading: state.api.loading
+  restaurantDetails: state.yelp.restaurantDetails,
+  loading: state.yelp.loading
 });
 
 export default connect(mapStateToProps)(RestaurantDetailsContainer);

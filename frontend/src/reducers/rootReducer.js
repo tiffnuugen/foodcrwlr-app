@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 import authReducer from './authReducer';
-import apiReducer from './apiReducer';
+import yelpReducer from './yelpReducer';
 import reviewsReducer from './reviewsReducer';
 
 const appReducer = combineReducers({
   auth: authReducer,
-  api: apiReducer,
+  yelp: yelpReducer,
   reviews: reviewsReducer
 });
 

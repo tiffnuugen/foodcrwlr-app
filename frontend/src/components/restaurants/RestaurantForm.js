@@ -64,7 +64,7 @@ class RestaurantForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  loading: state.api.loading
+  loading: state.yelp.loading
 });
 
 const mapDispatchToProps = (dispatch) => ({
