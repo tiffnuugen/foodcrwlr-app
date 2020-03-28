@@ -17,21 +17,21 @@ ActiveRecord::Schema.define(version: 2020_03_13_195204) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
-    t.bigint "yelp_id"
+    t.string "yelp_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["yelp_id"], name: "index_restaurants_on_yelp_id", unique: true
+    t.index ["yelp_id"], name: "index_restaurants_on_yelp_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.string "text"
     t.integer "rating"
     t.bigint "user_id"
-    t.bigint "restaurant_id"
+    t.string "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id", unique: true
-    t.index ["user_id"], name: "index_reviews_on_user_id", unique: true
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,6 +41,4 @@ ActiveRecord::Schema.define(version: 2020_03_13_195204) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "reviews", "restaurants"
-  add_foreign_key "reviews", "users"
 end
