@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "static#home"
   get :logged_in, to: 'sessions#logged_in'
-  post '/yelp', to: 'yelp#search'
+  post '/search', to: 'yelp#search'
   resources :sessions, only: [:index, :create]
   resources :reviews
   resources :users
