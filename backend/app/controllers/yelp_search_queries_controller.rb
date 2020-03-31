@@ -1,0 +1,2 @@
+class YelpSearchQueriesController < ApplicationController
+end
