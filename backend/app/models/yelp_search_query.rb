@@ -1,2 +1,0 @@
-class YelpSearchQuery < ApplicationRecord
-end
