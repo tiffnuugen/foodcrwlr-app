@@ -21,14 +21,12 @@ export const showRestaurantDetails = (id) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_RESTAURANT_DETAILS' });
     axios
-      .get(`${corsApiUrl}https://api.yelp.com/v3/businesses/${id}`, {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-        }
+      .post('http://localhost:3001/details', {
+        id: id
       })
-      .then((res) =>
-        dispatch({ type: 'SHOW_RESTAURANT_DETAILS', restaurant: res.data })
-      )
+      .then((res) => {
+        dispatch({ type: 'SHOW_RESTAURANT_DETAILS', restaurant: res.data });
+      })
       .catch((error) => console.log(error.response));
   };
 };
