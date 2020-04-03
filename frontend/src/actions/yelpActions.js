@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const fetchRestaurants = (searchValues) => {
-  const corsApiUrl = 'https://cors-anywhere.herokuapp.com/';
   return (dispatch) => {
     dispatch({ type: 'LOADING_RESTAURANTS' });
     axios
@@ -17,7 +16,6 @@ export const fetchRestaurants = (searchValues) => {
 };
 
 export const showRestaurantDetails = (id) => {
-  const corsApiUrl = 'https://cors-anywhere.herokuapp.com/';
   return (dispatch) => {
     dispatch({ type: 'LOADING_RESTAURANT_DETAILS' });
     axios
