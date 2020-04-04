@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_review, only: [:show, :destroy, :update]
+  before_action :set_restaurant, only: [:show, :destroy, :update]
 
   def index
     restaurants = Restaurant.all
