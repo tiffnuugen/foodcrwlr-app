@@ -1,7 +1,21 @@
 import React from 'react';
 import { Comment, Rating } from 'semantic-ui-react';
 
-const Review = ({ text, rating, username }) => {
+const renderDate = (createdAt) => {
+  const date = new Date(createdAt).toLocaleDateString();
+  return date;
+};
+
+const renderTime = (createdAt) => {
+  const time = new Date(createdAt).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true
+  });
+  return time;
+};
+
+const Review = ({ text, rating, username, createdAt }) => {
   return (
     <Comment>
       {/* <Comment.Avatar src='' /> */}
@@ -9,14 +23,7 @@ const Review = ({ text, rating, username }) => {
       <Comment.Content>
         <Comment.Author as='a'>{username}</Comment.Author>
         <Comment.Metadata>
-          <div>
-            {new Date().toLocaleDateString()} at{' '}
-            {new Date().toLocaleTimeString('en-US', {
-              hour: 'numeric',
-              hour12: true,
-              minute: 'numeric'
-            })}
-          </div>
+          {renderDate(createdAt)} at {renderTime(createdAt)}
         </Comment.Metadata>
         <Comment.Text>{text}</Comment.Text>
         <Comment.Actions>
