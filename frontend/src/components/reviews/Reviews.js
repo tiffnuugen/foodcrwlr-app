@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Comment, Message } from 'semantic-ui-react';
+import { Divider, Header, Comment, Message } from 'semantic-ui-react';
 
 import Review from './Review';
 
@@ -12,6 +12,10 @@ class Reviews extends Component {
         Date.parse(a.created_at) < Date.parse(b.created_at) ? 1 : -1
       );
     return (
+      <>
+        <Divider section horizontal>
+          <Header as='h2'>REVIEWS ({reviews.length})</Header>
+        </Divider>
       <Comment.Group>
         {this.props.reviews.map((review) => (
           <Review
