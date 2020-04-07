@@ -16,26 +16,30 @@ class Reviews extends Component {
         <Divider section horizontal>
           <Header as='h2'>REVIEWS ({reviews.length})</Header>
         </Divider>
-      <Comment.Group>
+        {reviews.length > 0 ? (
+          <Comment.Group>
             {reviews.map(
               ({ id, text, rating, created_at, user: { username } }) => (
-          <Review
+                <Review
                   key={id}
                   text={text}
                   rating={rating}
                   createdAt={created_at}
                   username={username}
-          />
+                />
               )
             )}
           </Comment.Group>
-          <Message.Header>No Reviews</Message.Header>
-          <p>
-            It looks like there are no reviews here yet. Be the first to leave
-            one here.
-          </p>
-        </Message> */}
-      </Comment.Group>
+        ) : (
+          <Message>
+            <Message.Header>No Reviews</Message.Header>
+            <p>
+              It looks like there are no reviews here yet. Be the first to leave
+              a review here.
+            </p>
+          </Message>
+        )}
+      </>
     );
   }
 }
