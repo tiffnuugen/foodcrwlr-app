@@ -17,15 +17,18 @@ class Reviews extends Component {
           <Header as='h2'>REVIEWS ({reviews.length})</Header>
         </Divider>
       <Comment.Group>
-        {this.props.reviews.map((review) => (
+            {reviews.map(
+              ({ id, text, rating, created_at, user: { username } }) => (
           <Review
-            key={uuidv4()}
-            text={review.text}
-            rating={review.rating}
-            username={this.props.username}
+                  key={id}
+                  text={text}
+                  rating={rating}
+                  createdAt={created_at}
+                  username={username}
           />
-        ))}
-        {/* <Message>
+              )
+            )}
+          </Comment.Group>
           <Message.Header>No Reviews</Message.Header>
           <p>
             It looks like there are no reviews here yet. Be the first to leave
