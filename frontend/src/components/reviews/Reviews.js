@@ -6,10 +6,11 @@ import Review from './Review';
 
 class Reviews extends Component {
   render() {
-    // const reviews = this.props.reviews.filter(
-    //   (review) => review.restaurantId === this.props.restaurantId
-    // );
-    // console.log(reviews);
+    const reviews = this.props.reviews
+      .filter((review) => review.restaurant_id === this.props.restaurantId)
+      .sort((a, b) =>
+        Date.parse(a.created_at) < Date.parse(b.created_at) ? 1 : -1
+      );
     return (
       <Comment.Group>
         {this.props.reviews.map((review) => (
