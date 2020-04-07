@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Divider, Header } from 'semantic-ui-react';
 
 import ReviewForm from '../components/reviews/ReviewForm';
 import Reviews from '../components/reviews/Reviews';
@@ -10,14 +9,9 @@ class ReviewsContainer extends Component {
     return (
       <div className='reviews container'>
         <ReviewForm />
-        <Divider section horizontal>
-          <Header as='h2'>REVIEWS</Header>
-        </Divider>
         <Reviews
           reviews={this.props.reviews}
-          username={this.props.username}
-          // restaurantId={this.props.restaurantId}
-          // userId={this.props.userId}
+          restaurantId={this.props.restaurantId}
         />
       </div>
     );
@@ -26,9 +20,7 @@ class ReviewsContainer extends Component {
 
 const mapStateToProps = (state) => ({
   reviews: state.api.reviews,
-  username: state.auth.user.username
-  // restaurantId: state.yelp.restaurantDetails.id,
-  // userId: state.auth.user.id
+  restaurantId: state.yelp.restaurantDetails.id
 });
 
 export default connect(mapStateToProps)(ReviewsContainer);
