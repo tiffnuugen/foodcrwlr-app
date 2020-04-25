@@ -35,7 +35,7 @@ class Reviews extends Component {
             <Message.Header>No Reviews</Message.Header>
             <p>
               It looks like there are no reviews here yet. Be the first to leave
-              a review here.
+              a review.
             </p>
           </Message>
         )}
