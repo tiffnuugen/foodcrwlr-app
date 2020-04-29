@@ -99,3 +99,8 @@ form.ui.form.review {
 button.ui.teal.basic.right.floated.button {
   margin-top: 0.5rem;
 }
+
+/* comment author */
+.ui.comments .comment a.author {
+  pointer-events: none;
+}
