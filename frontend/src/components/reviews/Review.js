@@ -1,5 +1,6 @@
 import React from 'react';
 import { Comment, Rating } from 'semantic-ui-react';
+import axios from 'axios';
 
 const renderDate = (createdAt) => {
   const date = new Date(createdAt).toLocaleDateString();
@@ -15,7 +16,7 @@ const renderTime = (createdAt) => {
   return time;
 };
 
-const Review = ({ text, rating, username, createdAt }) => {
+const Review = ({ text, rating, username, createdAt, currentUser }) => {
   return (
     <Comment>
       {/* <Comment.Avatar src='' /> */}
@@ -27,8 +28,12 @@ const Review = ({ text, rating, username, createdAt }) => {
         </Comment.Metadata>
         <Comment.Text>{text}</Comment.Text>
         <Comment.Actions>
-          <Comment.Action>Edit</Comment.Action>
-          <Comment.Action>Delete</Comment.Action>
+          {currentUser === username ? (
+            <>
+              <Comment.Action>Edit</Comment.Action>
+              <Comment.Action>Delete</Comment.Action>
+            </>
+          ) : null}
         </Comment.Actions>
       </Comment.Content>
     </Comment>
