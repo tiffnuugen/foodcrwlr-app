@@ -12,6 +12,7 @@ class ReviewsContainer extends Component {
         <Reviews
           reviews={this.props.reviews}
           restaurantId={this.props.restaurantId}
+          currentUser={this.props.username}
         />
       </div>
     );
@@ -20,7 +21,8 @@ class ReviewsContainer extends Component {
 
 const mapStateToProps = (state) => ({
   reviews: state.api.reviews,
-  restaurantId: state.yelp.restaurantDetails.id
+  restaurantId: state.yelp.restaurantDetails.id,
+  username: state.auth.user.username
 });
 
 export default connect(mapStateToProps)(ReviewsContainer);
