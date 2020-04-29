@@ -11,6 +11,7 @@ class Reviews extends Component {
       .sort((a, b) =>
         Date.parse(a.created_at) < Date.parse(b.created_at) ? 1 : -1
       );
+    const { currentUser } = this.props;
     return (
       <>
         <Divider section horizontal>
@@ -26,6 +27,7 @@ class Reviews extends Component {
                   rating={rating}
                   createdAt={created_at}
                   username={username}
+                  currentUser={currentUser}
                 />
               )
             )}
