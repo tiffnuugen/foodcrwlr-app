@@ -15,6 +15,11 @@ class ReviewsController < ApplicationController
     render json: review, status: 201
   end
 
+  def update
+    @review.update(review_params)
+    render json: @review, status: 200
+  end
+
   def destroy
     review_id = @review.id
     @review.destroy
