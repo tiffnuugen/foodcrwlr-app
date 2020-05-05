@@ -15,6 +15,11 @@ class ReviewsController < ApplicationController
     render json: review, status: 201
   end
 
+  def destroy
+    review_id = @review.id
+    @review.destroy
+    render json: {message: "review deleted", review_id: review_id}
+  end
 
   private
   def review_params
