@@ -47,7 +47,9 @@ const Review = ({
           {currentUser === username ? (
             <>
               <Comment.Action>Edit</Comment.Action>
-              <Comment.Action>Delete</Comment.Action>
+              <Comment.Action onClick={() => handleDelete(id)}>
+                Delete
+              </Comment.Action>
             </>
           ) : null}
         </Comment.Actions>
