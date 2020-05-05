@@ -24,6 +24,15 @@ const Review = ({
   createdAt,
   currentUser,
   deleteReview
+}) => {
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:3001/reviews/${id}`)
+      .then((res) => {
+        deleteReview(res.data.review_id);
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <Comment>
       {/* <Comment.Avatar src='' /> */}
