@@ -16,7 +16,14 @@ const renderTime = (createdAt) => {
   return time;
 };
 
-const Review = ({ text, rating, username, createdAt, currentUser }) => {
+const Review = ({
+  id,
+  text,
+  rating,
+  username,
+  createdAt,
+  currentUser,
+  deleteReview
   return (
     <Comment>
       {/* <Comment.Avatar src='' /> */}
