@@ -26,4 +26,6 @@ const mapStateToProps = (state) => ({
   username: state.auth.user.username
 });
 
-export default connect(mapStateToProps)(ReviewsContainer);
+const mapDispatchToProps = (dispatch) => ({
+  deleteReview: (id) => dispatch(deleteReview(id))
+});
