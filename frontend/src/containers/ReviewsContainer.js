@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ReviewForm from '../components/reviews/ReviewForm';
 import Reviews from '../components/reviews/Reviews';
 
+import { deleteReview } from '../actions/apiActions';
 class ReviewsContainer extends Component {
   render() {
     return (
