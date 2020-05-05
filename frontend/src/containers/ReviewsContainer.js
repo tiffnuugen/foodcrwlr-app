@@ -14,6 +14,7 @@ class ReviewsContainer extends Component {
           reviews={this.props.reviews}
           restaurantId={this.props.restaurantId}
           currentUser={this.props.username}
+          deleteReview={this.props.deleteReview}
         />
       </div>
     );
