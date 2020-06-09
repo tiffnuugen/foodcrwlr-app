@@ -15,20 +15,15 @@ class Home extends Component {
   };
 
   checkLoginStatus = () => {
+    const { loginStatus, loginUser, logoutUser } = this.props;
     axios
       .get('http://localhost:3001/logged_in', { withCredentials: true })
       .then((res) => {
-        if (res.data.logged_in && this.props.loginStatus === 'NOT_LOGGED_IN') {
-          this.props.loginUser(res.data.user);
-        } else if (
-          !res.data.logged_in &&
-          this.props.loginStatus === 'LOGGED_IN'
-        ) {
-          this.props.logoutUser();
-        } else if (
-          !res.data.logged_in &&
-          this.props.loginStatus === 'NOT_LOGGED_IN'
-        ) {
+        if (res.data.logged_in && loginStatus === 'NOT_LOGGED_IN') {
+          loginUser(res.data.user);
+        } else if (!res.data.logged_in && loginStatus === 'LOGGED_IN') {
+          logoutUser();
+        } else if (!res.data.logged_in && loginStatus === 'NOT_LOGGED_IN') {
           this.setState({
             redirect: true
           });
@@ -50,7 +45,7 @@ class Home extends Component {
   handleLogout = () => {
     axios
       .delete('http://localhost:3001/logout', { withCredentials: true })
-      .then((res) => {
+      .then(() => {
         this.props.logoutUser();
         this.setState({
           redirect: true
@@ -60,15 +55,16 @@ class Home extends Component {
   };
 
   render() {
+    const { username, clearRestaurants } = this.props;
     if (this.state.redirect) {
       return <Redirect to='/login' />;
     }
     return (
       <>
         <Header
-          username={this.props.username}
+          username={username}
           handleLogout={this.handleLogout}
-          clearRestaurants={this.props.clearRestaurants}
+          clearRestaurants={clearRestaurants}
         />
         <Route path='/search'>
           <RestaurantsContainer />

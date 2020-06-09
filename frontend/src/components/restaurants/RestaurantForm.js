@@ -19,13 +19,13 @@ class RestaurantForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.fetchRestaurants({
-      term: this.state.term,
-      location: this.state.location
+    const { term, location } = this.state;
+    const { fetchRestaurants, history } = this.props;
+    fetchRestaurants({
+      term: term,
+      location: location
     });
-    this.props.history.push(
-      `/search?term=${this.state.term}&location=${this.state.location}`
-    );
+    history.push(`/search?term=${term}&location=${location}`);
     this.setState({
       term: '',
       location: ''
@@ -33,6 +33,7 @@ class RestaurantForm extends Component {
   };
 
   render() {
+    const { term, location } = this.state;
     return (
       <form className='search form container' onSubmit={this.handleSubmit}>
         <Search
@@ -41,7 +42,7 @@ class RestaurantForm extends Component {
           name='term'
           placeholder='Search restaurants...'
           showNoResults={false}
-          value={this.state.term}
+          value={term}
           onSearchChange={this.handleSearchChange}
         />
         <Search
@@ -50,7 +51,7 @@ class RestaurantForm extends Component {
           name='location'
           placeholder='near this location...'
           showNoResults={false}
-          value={this.state.location}
+          value={location}
           onSearchChange={this.handleSearchChange}
         />
         {this.props.loading ? (

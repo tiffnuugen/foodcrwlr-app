@@ -52,7 +52,8 @@ class Signup extends Component {
   };
 
   render() {
-    if (this.state.redirect) {
+    const { username, password, passwordConfirmation, redirect } = this.state;
+    if (redirect) {
       return <Redirect to='/' />;
     }
     return (
@@ -66,7 +67,7 @@ class Signup extends Component {
                 label='Username'
                 placeholder='Username'
                 name='username'
-                value={this.state.username}
+                value={username}
                 onChange={this.handleChange}
               />
               <Form.Input
@@ -76,7 +77,7 @@ class Signup extends Component {
                 type='password'
                 placeholder='Password'
                 name='password'
-                value={this.state.password}
+                value={password}
                 onChange={this.handleChange}
               />
               <Form.Input
@@ -86,7 +87,7 @@ class Signup extends Component {
                 type='password'
                 placeholder='Password Confirmation'
                 name='passwordConfirmation'
-                value={this.state.passwordConfirmation}
+                value={passwordConfirmation}
                 onChange={this.handleChange}
               />
               <Button type='submit' color='teal'>

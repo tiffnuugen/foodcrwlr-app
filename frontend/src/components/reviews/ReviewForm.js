@@ -25,7 +25,13 @@ class ReviewForm extends Component {
 
   handleSubmit = async () => {
     const { text, rating } = this.state;
-    const { userId, restaurantId, restaurantName, yelpId } = this.props;
+    const {
+      userId,
+      restaurantId,
+      restaurantName,
+      yelpId,
+      addReview
+    } = this.props;
 
     await axios.post('http://localhost:3001/restaurants', {
       restaurant: {
@@ -49,20 +55,21 @@ class ReviewForm extends Component {
   };
 
   render() {
+    const { text, rating } = this.state;
     return (
       <Form className='review' onSubmit={this.handleSubmit}>
         <strong>Select a rating:</strong>{' '}
         <Rating
           clearable
           size='huge'
-          rating={this.state.rating}
+          rating={rating}
           maxRating={5}
           onRate={this.handleRate}
         />
         <TextArea
           name='text'
           placeholder='Write a review...'
-          value={this.state.text}
+          value={text}
           onChange={this.handleChange}
         />
         <Button type='submit' floated='right' basic color='teal'>

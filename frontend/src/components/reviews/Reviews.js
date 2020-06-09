@@ -11,7 +11,7 @@ class Reviews extends Component {
       .sort((a, b) =>
         Date.parse(a.created_at) < Date.parse(b.created_at) ? 1 : -1
       );
-    const { currentUser, deleteReview } = this.props;
+    const { currentUser, deleteReview, editReview } = this.props;
     return (
       <>
         <Divider section horizontal>
@@ -20,16 +20,25 @@ class Reviews extends Component {
         {reviews.length > 0 ? (
           <Comment.Group>
             {reviews.map(
-              ({ id, text, rating, created_at, user: { username } }) => (
+              ({
+                id,
+                text,
+                rating,
+                edited,
+                created_at,
+                user: { username }
+              }) => (
                 <Review
                   key={id}
                   id={id}
-                  text={text}
-                  rating={rating}
+                  originalText={text}
+                  originalRating={rating}
+                  edited={edited}
                   createdAt={created_at}
                   username={username}
                   currentUser={currentUser}
                   deleteReview={deleteReview}
+                  editReview={editReview}
                 />
               )
             )}

@@ -49,7 +49,8 @@ class Login extends Component {
   };
 
   render() {
-    if (this.state.redirect) {
+    const { username, password, redirect } = this.state;
+    if (redirect) {
       return <Redirect to='/' />;
     }
     return (
@@ -63,7 +64,7 @@ class Login extends Component {
                 label='Username'
                 placeholder='Username'
                 name='username'
-                value={this.state.username}
+                value={username}
                 onChange={this.handleChange}
               />
               <Form.Input
@@ -73,7 +74,7 @@ class Login extends Component {
                 type='password'
                 placeholder='Password'
                 name='password'
-                value={this.state.password}
+                value={password}
                 onChange={this.handleChange}
               />
               <Button type='submit' color='teal'>
