@@ -47,7 +47,7 @@ class ReviewForm extends Component {
         restaurant_id: restaurantId
       }
     });
-    this.props.addReview(review.data);
+    addReview(review.data);
     this.setState({
       text: '',
       rating: 0
