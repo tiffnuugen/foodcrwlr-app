@@ -104,3 +104,8 @@ button.ui.teal.basic.right.floated.button {
 .ui.comments .comment a.author {
   pointer-events: none;
 }
+
+/* textarea */
+.ui.form textarea {
+  resize: none;
+}
