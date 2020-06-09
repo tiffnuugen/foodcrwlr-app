@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_195204) do
   create_table "reviews", force: :cascade do |t|
     t.text "text"
     t.integer "rating"
+    t.boolean "edited", default: false
     t.bigint "user_id"
     t.string "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
