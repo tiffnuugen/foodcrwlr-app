@@ -14,6 +14,21 @@ export default (state = initialState, action) => {
       console.log('review deleted!', action);
       const reviews = state.reviews.filter((review) => review.id !== action.id);
       return { ...state, reviews: reviews };
+    case 'EDIT_REVIEW':
+      console.log('review edited!', action);
+      return {
+        ...state,
+        reviews: state.reviews.map((review) =>
+          review.id === action.review.id
+            ? {
+                ...review,
+                text: action.review.text,
+                rating: action.review.rating,
+                edited: action.review.edited
+              }
+            : review
+        )
+      };
     default:
       return state;
   }
