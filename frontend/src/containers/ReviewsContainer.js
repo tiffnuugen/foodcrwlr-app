@@ -5,6 +5,7 @@ import ReviewForm from '../components/reviews/ReviewForm';
 import Reviews from '../components/reviews/Reviews';
 
 import { deleteReview } from '../actions/apiActions';
+import { editReview } from '../actions/apiActions';
 
 class ReviewsContainer extends Component {
   render() {
@@ -16,6 +17,7 @@ class ReviewsContainer extends Component {
           restaurantId={this.props.restaurantId}
           currentUser={this.props.username}
           deleteReview={this.props.deleteReview}
+          editReview={this.props.editReview}
         />
       </div>
     );
@@ -29,7 +31,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteReview: (id) => dispatch(deleteReview(id))
+  deleteReview: (id) => dispatch(deleteReview(id)),
+  editReview: (review) => dispatch(editReview(review))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewsContainer);
