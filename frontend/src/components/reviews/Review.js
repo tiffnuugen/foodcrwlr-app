@@ -133,7 +133,7 @@ class Review extends Component {
                   />
                 </Comment.Text>
                 <Comment.Actions>
-                  {currentUser === username ? (
+                  {currentUser === username && (
                     <>
                       <Comment.Action onClick={() => this.handleEdit()}>
                         Done
@@ -142,7 +142,7 @@ class Review extends Component {
                         Delete
                       </Comment.Action>
                     </>
-                  ) : null}
+                  )}
                 </Comment.Actions>
               </Comment.Content>
             </Comment>
@@ -164,11 +164,11 @@ class Review extends Component {
               <Comment.Text>
                 {originalText}
                 <Comment.Metadata>
-                  {currentUser === username && edited ? '(edited)' : null}
+                  {currentUser === username && edited && '(edited)'}
                 </Comment.Metadata>
               </Comment.Text>
               <Comment.Actions>
-                {currentUser === username ? (
+                {currentUser === username && (
                   <>
                     <Comment.Action onClick={() => this.toggleEdit()}>
                       Edit
@@ -177,7 +177,7 @@ class Review extends Component {
                       Delete
                     </Comment.Action>
                   </>
-                ) : null}
+                )}
               </Comment.Actions>
             </Comment.Content>
           </Comment>
