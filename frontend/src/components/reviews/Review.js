@@ -32,13 +32,11 @@ class Review extends Component {
   };
 
   handleEdit = () => {
-    const { id, originalText, originalRating, editReview } = this.props;
+    const { id, originalText, originalRating, editReview, edited } = this.props;
     const { text, rating } = this.state;
     if (
-      originalText === text ||
-      originalRating === rating ||
-      originalText !== text ||
-      originalRating !== rating
+      (!edited && (originalText !== text || originalRating !== rating)) ||
+      (edited && (originalText === text || originalRating === rating))
     ) {
       axios
         .patch(`http://localhost:3001/reviews/${id}`, {
@@ -89,8 +87,6 @@ class Review extends Component {
   render() {
     const {
       id,
-      originalText,
-      originalRating,
       edited,
       username,
       createdAt,
@@ -153,7 +149,7 @@ class Review extends Component {
             <Rating
               disabled
               size='large'
-              defaultRating={originalRating}
+              defaultRating={rating}
               maxRating={5}
             />
             <Comment.Content>
@@ -162,7 +158,7 @@ class Review extends Component {
                 {this.renderDate(createdAt)} at {this.renderTime(createdAt)}
               </Comment.Metadata>
               <Comment.Text>
-                {originalText}
+                {text}
                 <Comment.Metadata>
                   {currentUser === username && edited && '(edited)'}
                 </Comment.Metadata>
