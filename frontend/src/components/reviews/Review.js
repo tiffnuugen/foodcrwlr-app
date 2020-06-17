@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Comment, Rating, Form, TextArea } from 'semantic-ui-react';
+import { Comment, Rating, Form } from 'semantic-ui-react';
 import TextareaAutosize from 'react-textarea-autosize';
 import axios from 'axios';
 
