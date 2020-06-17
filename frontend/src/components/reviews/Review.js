@@ -36,6 +36,7 @@ class Review extends Component {
     const { text, rating } = this.state;
     if (
       (!edited && (originalText !== text || originalRating !== rating)) ||
+      (edited && originalText !== text && originalRating !== rating) ||
       (edited && (originalText === text || originalRating === rating))
     ) {
       axios
