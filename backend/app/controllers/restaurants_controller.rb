@@ -21,7 +21,7 @@ class RestaurantsController < ApplicationController
   end
 
   def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find_by(yelp_id: params[:id])
   end
   
 end
