@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :destroy, :update]
+  before_action :set_review, only: [:show, :update, :destroy]
 
   def index
     reviews = Review.all
