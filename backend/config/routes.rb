@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:index, :create]
   resources :reviews, only: [:index, :show, :create, :update, :destroy]
   resources :users, only: [:index, :show]
-  resources :restaurants, only: [:index, :show, :create, :update, :destroy]
+  resources :restaurants, only: [:index, :show, :create]
   resources :registrations, only: [:index, :create]
   delete :logout, to: 'sessions#logout'
 end
