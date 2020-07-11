@@ -15,7 +15,7 @@ class Review extends Component {
 
   toggleEdit = () => {
     this.setState({
-      isEditing: true
+      isEditing: !this.state.isEditing
     });
   };
 
@@ -50,22 +50,20 @@ class Review extends Component {
         .then((res) => {
           editReview(res.data);
           this.setState({
-            isEditing: false
+            isEditing: !this.state.isEditing
           });
         });
     } else {
       axios
         .patch(`http://localhost:3001/reviews/${id}`, {
           review: {
-            text: text,
-            rating: rating,
             edited: false
           }
         })
         .then((res) => {
           editReview(res.data);
           this.setState({
-            isEditing: false
+            isEditing: !this.state.isEditing
           });
         });
     }
