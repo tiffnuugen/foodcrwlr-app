@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Image, Icon } from 'semantic-ui-react';
+import { Card, Image, Icon, Rating } from 'semantic-ui-react';
 
 const Restaurants = ({ restaurants, showRestaurantDetails }) => {
   return (
     <Card.Group itemsPerRow={5}>
       {restaurants.map(
-        ({ id, image_url, name, price, rating, display_phone }) => (
+        ({ id, image_url, name, price, rating, display_phone, categories }) => (
           <Card
             key={id}
             as={Link}
@@ -17,8 +17,17 @@ const Restaurants = ({ restaurants, showRestaurantDetails }) => {
             <Card.Content>
               <Card.Header>{name}</Card.Header>
               <Card.Meta>
-                Price: {!price ? 'N/A' : price} | Rating:{' '}
-                {rating % 1 === 0 ? `${rating}.0` : rating}
+                {rating % 1 === 0 ? `${rating}.0` : rating}{' '}
+                <Rating
+                  icon='star'
+                  defaultRating={rating}
+                  maxRating={5}
+                  disabled
+                />
+              </Card.Meta>
+              <Card.Meta>
+                {price ? price : categories[0].title} {price && '|'}{' '}
+                {price && categories[0].title}
               </Card.Meta>
             </Card.Content>
             <Card.Content extra>
