@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
     case 'ADD_RESTAURANTS':
       console.log('restaurants added!', action);
       return {
-        ...state.restaurants,
+        ...state,
         restaurants: action.restaurants,
         loading: false
       };
