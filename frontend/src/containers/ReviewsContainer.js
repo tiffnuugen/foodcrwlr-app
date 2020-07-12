@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 
 import ReviewForm from '../components/reviews/ReviewForm';
@@ -43,7 +44,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteReview: (id) => dispatch(deleteReview(id)),
-  editReview: (review) => dispatch(editReview(review))
+  editReview: (review) => dispatch(editReview(review)),
+  fetchReviews: (reviews) => dispatch(fetchReviews(reviews))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewsContainer);
