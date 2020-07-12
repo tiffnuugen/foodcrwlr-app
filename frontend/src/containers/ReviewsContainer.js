@@ -9,6 +9,15 @@ import { editReview } from '../actions/apiActions';
 import { fetchReviews } from '../actions/apiActions';
 
 class ReviewsContainer extends Component {
+  fetchReviews = () => {
+    axios
+      .get('http://localhost:3001/reviews')
+      .then((res) => this.props.fetchReviews(res.data));
+  };
+
+  componentDidMount() {
+    this.fetchReviews();
+  }
   render() {
     return (
       <div className='reviews container'>
