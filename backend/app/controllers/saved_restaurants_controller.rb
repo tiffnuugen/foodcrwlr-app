@@ -26,6 +26,6 @@ class SavedRestaurantsController < ApplicationController
   end
 
   def set_saved_restaurant
-    @saved_restaurant = SavedRestaurant.find_by(yelp_id: params[:id])
+    @saved_restaurant = SavedRestaurant.find(params[:id])
   end
 end
