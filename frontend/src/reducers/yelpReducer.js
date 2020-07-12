@@ -19,9 +19,6 @@ export default (state = initialState, action) => {
         restaurants: action.restaurants,
         loading: false
       };
-    case 'CLEAR_RESTAURANTS':
-      console.log('restaurants cleared!', action);
-      return initialState;
     case 'LOADING_RESTAURANT_DETAILS':
       console.log('restaurant details loading...', action);
       return {

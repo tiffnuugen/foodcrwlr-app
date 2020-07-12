@@ -4,16 +4,10 @@ import { Link } from 'react-router-dom';
 
 import RestaurantForm from '../restaurants/RestaurantForm';
 
-const Header = ({ username, handleLogout, clearRestaurants }) => {
+const Header = ({ username, handleLogout }) => {
   return (
     <Menu secondary size='massive'>
-      <H1
-        size='huge'
-        color='teal'
-        as={Link}
-        to='/'
-        onClick={() => clearRestaurants()}
-      >
+      <H1 size='huge' color='teal' as={Link} to='/'>
         FoodCrwlr
       </H1>
       <RestaurantForm />
