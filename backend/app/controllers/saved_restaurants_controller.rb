@@ -17,7 +17,7 @@ class SavedRestaurantsController < ApplicationController
 
   def destroy
     @saved_restaurant.destroy
-    render json: {message: "restaurant unsaved", id: @saved_restaurant.yelp_id}
+    render json: {message: "restaurant unsaved", id: @saved_restaurant.id}
   end
 
   private
