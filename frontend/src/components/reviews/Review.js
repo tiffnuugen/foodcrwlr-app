@@ -155,9 +155,7 @@ class Review extends Component {
               </Comment.Metadata>
               <Comment.Text>
                 {text}
-                <Comment.Metadata>
-                  {currentUser === username && edited && '(edited)'}
-                </Comment.Metadata>
+                <Comment.Metadata>{edited && '(edited)'}</Comment.Metadata>
               </Comment.Text>
               <Comment.Actions>
                 {currentUser === username && (
