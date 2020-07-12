@@ -12,8 +12,10 @@ export default (state = initialState, action) => {
       return { ...state, reviews: action.reviews };
     case 'DELETE_REVIEW':
       console.log('review deleted!', action);
-      const reviews = state.reviews.filter((review) => review.id !== action.id);
-      return { ...state, reviews: reviews };
+      return {
+        ...state,
+        reviews: state.reviews.filter((review) => review.id !== action.id)
+      };
     case 'EDIT_REVIEW':
       console.log('review edited!', action);
       return {
