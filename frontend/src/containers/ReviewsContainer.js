@@ -18,6 +18,7 @@ class ReviewsContainer extends Component {
   componentDidMount() {
     this.fetchReviews();
   }
+
   render() {
     return (
       <div className='reviews container'>
@@ -25,7 +26,7 @@ class ReviewsContainer extends Component {
         <Reviews
           reviews={this.props.reviews}
           restaurantId={this.props.restaurantId}
-          currentUser={this.props.username}
+          currentUser={this.props.currentUser}
           deleteReview={this.props.deleteReview}
           editReview={this.props.editReview}
         />
@@ -37,7 +38,7 @@ class ReviewsContainer extends Component {
 const mapStateToProps = (state) => ({
   reviews: state.api.reviews,
   restaurantId: state.yelp.restaurantDetails.id,
-  username: state.auth.user.username
+  currentUser: state.auth.user.username
 });
 
 const mapDispatchToProps = (dispatch) => ({
