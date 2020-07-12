@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_210557) do
 
   create_table "saved_restaurants", force: :cascade do |t|
     t.string "name"
+    t.string "yelp_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
