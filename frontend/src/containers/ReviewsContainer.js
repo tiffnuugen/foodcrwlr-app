@@ -6,6 +6,7 @@ import Reviews from '../components/reviews/Reviews';
 
 import { deleteReview } from '../actions/apiActions';
 import { editReview } from '../actions/apiActions';
+import { fetchReviews } from '../actions/apiActions';
 
 class ReviewsContainer extends Component {
   render() {
