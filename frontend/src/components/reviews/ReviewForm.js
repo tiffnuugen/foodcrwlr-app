@@ -26,7 +26,7 @@ class ReviewForm extends Component {
   handleSubmit = async () => {
     const { text, rating } = this.state;
     const {
-      userId,
+      currentUserId,
       restaurantId,
       restaurantName,
       yelpId,
@@ -43,7 +43,7 @@ class ReviewForm extends Component {
       review: {
         text: text,
         rating: rating,
-        user_id: userId,
+        user_id: currentUserId,
         restaurant_id: restaurantId
       }
     });
@@ -83,7 +83,7 @@ class ReviewForm extends Component {
 
 const mapStateToProps = (state) => ({
   restaurantId: state.yelp.restaurantDetails.id,
-  userId: state.auth.user.id,
+  currentUserId: state.auth.user.id,
   restaurantName: state.yelp.restaurantDetails.name,
   yelpId: state.yelp.restaurantDetails.id
 });
