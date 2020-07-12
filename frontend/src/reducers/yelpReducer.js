@@ -1,6 +1,7 @@
 const initialState = {
   restaurants: [],
   restaurantDetails: {},
+  savedRestaurants: [],
   loading: false
 };
 
