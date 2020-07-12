@@ -26,7 +26,6 @@ export default (state = initialState, action) => {
       console.log('restaurant details loading...', action);
       return {
         ...state,
-        restaurantDetails: { ...state.restaurantDetails },
         loading: true
       };
     case 'SHOW_RESTAURANT_DETAILS':
