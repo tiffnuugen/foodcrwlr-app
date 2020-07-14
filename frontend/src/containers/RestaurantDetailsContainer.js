@@ -32,10 +32,27 @@ class RestaurantDetailsContainer extends Component {
     );
     return (
       <div className='ui text restaurant details container'>
+        {savedRestaurants.length === 0 ? (
+          <RestaurantDetails
+            restaurantDetails={this.props.restaurantDetails}
+            saveRestaurant={this.props.saveRestaurant}
+            unsaveRestaurant={this.props.unsaveRestaurant}
+            currentUserId={this.props.currentUserId}
+            loading={this.props.loading}
+          />
+        ) : (
+          savedRestaurants.map((savedRest) => (
         <RestaurantDetails
+              key={savedRest.id}
+              savedRest={savedRest}
           restaurantDetails={this.props.restaurantDetails}
+              saveRestaurant={this.props.saveRestaurant}
+              unsaveRestaurant={this.props.unsaveRestaurant}
+              currentUserId={this.props.currentUserId}
           loading={this.props.loading}
         />
+          ))
+        )}
         <Divider section />
         <ReviewsContainer />
       </div>
