@@ -76,6 +76,7 @@ class RestaurantDetails extends Component {
   render() {
     const {
       loading,
+      savedRest,
       restaurantDetails: {
         id,
         name,
@@ -118,10 +119,28 @@ class RestaurantDetails extends Component {
                     >
                       {name}
                     </Header>
-                    <div className='save restaurant'>
-                      <Button circular basic icon='bookmark outline' />
-                      <Label size='mini'>Save</Label>
-                    </div>
+                    {!!savedRest ? (
+                      <div className='save restaurant'>
+                        <Button
+                          active
+                          circular
+                          basic
+                          icon='bookmark outline'
+                          onClick={this.handleUnsave}
+                        />
+                        <Label size='mini'>Saved</Label>
+                      </div>
+                    ) : (
+                      <div className='save restaurant'>
+                        <Button
+                          circular
+                          basic
+                          icon='bookmark outline'
+                          onClick={this.handleSave}
+                        />
+                        <Label size='mini'>Save</Label>
+                      </div>
+                    )}
                     <Item.Meta>
                       {!categories ? 'Not Available' : categories[0].title}
                     </Item.Meta>
