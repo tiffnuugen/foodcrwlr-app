@@ -77,4 +77,4 @@ const mapStateToProps = (state) => ({
   username: state.auth.user.username
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);
