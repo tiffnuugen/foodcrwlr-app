@@ -39,7 +39,7 @@ class Signup extends Component {
         if (res.data.status === 'created') {
           this.props.loginUser(res.data.user);
           this.setState({
-            redirect: true
+            redirect: !this.state.redirect
           });
         }
       })

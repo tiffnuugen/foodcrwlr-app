@@ -37,7 +37,7 @@ class Login extends Component {
         if (res.data.logged_in === true) {
           this.props.loginUser(res.data.user);
           this.setState({
-            redirect: true
+            redirect: !this.state.redirect
           });
         }
       })

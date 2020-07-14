@@ -23,14 +23,14 @@ class Home extends Component {
           logoutUser();
         } else if (!res.data.logged_in && loginStatus === 'NOT_LOGGED_IN') {
           this.setState({
-            redirect: true
+            redirect: !this.state.redirect
           });
         }
       })
       .catch((error) => {
         if (error.response.status !== 200) {
           this.setState({
-            redirect: true
+            redirect: !this.state.redirect
           });
         }
       });
@@ -46,7 +46,7 @@ class Home extends Component {
       .then(() => {
         this.props.logoutUser();
         this.setState({
-          redirect: true
+          redirect: !this.state.redirect
         });
       })
       .catch((error) => console.log(error.response));
