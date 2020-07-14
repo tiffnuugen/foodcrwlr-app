@@ -7,7 +7,11 @@ import axios from 'axios';
 import RestaurantDetails from '../components/restaurants/RestaurantDetails';
 import ReviewsContainer from './ReviewsContainer';
 
-import { fetchReviews } from '../actions/apiActions';
+import {
+  saveRestaurant,
+  unsaveRestaurant,
+  fetchSavedRestaurants
+} from '../actions/yelpActions';
 
 class RestaurantDetailsContainer extends Component {
   fetchReviews = () => {
