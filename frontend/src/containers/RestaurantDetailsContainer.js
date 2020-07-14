@@ -25,6 +25,11 @@ class RestaurantDetailsContainer extends Component {
   }
 
   render() {
+    const savedRestaurants = this.props.savedRestaurants.filter(
+      (rest) =>
+        rest.yelp_id === this.props.restaurantDetails.id &&
+        rest.user_id === this.props.currentUserId
+    );
     return (
       <div className='ui text restaurant details container'>
         <RestaurantDetails
