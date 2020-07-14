@@ -29,6 +29,8 @@ export const showRestaurantDetails = (id) => {
   };
 };
 
-export const clearRestaurants = () => ({
-  type: 'CLEAR_RESTAURANTS'
+export const saveRestaurant = (restaurant) => ({
+  type: 'SAVE_RESTAURANT',
+  restaurant
+});
 });
