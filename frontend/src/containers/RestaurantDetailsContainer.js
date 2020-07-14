@@ -44,7 +44,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchReviews: (reviews) => dispatch(fetchReviews(reviews))
+  saveRestaurant: (restaurant) => dispatch(saveRestaurant(restaurant)),
+  unsaveRestaurant: (id) => dispatch(unsaveRestaurant(id)),
+  fetchSavedRestaurants: (restaurants) =>
+    dispatch(fetchSavedRestaurants(restaurants))
 });
 
 export default connect(
