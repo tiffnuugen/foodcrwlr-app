@@ -98,16 +98,13 @@ class RestaurantDetails extends Component {
                       {!categories ? 'Not Available' : categories[0].title}
                     </Item.Meta>
                     <Item.Meta>
-                      {!price ? (
-                        <strong>N/A</strong>
-                      ) : (
+                      {price &&
                         price
                           .split('')
                           .map(() => (
                             <Icon key={uuidv4()} fitted name='dollar sign' />
-                          ))
-                      )}{' '}
-                      |{' '}
+                          ))}{' '}
+                      {price && '|'}{' '}
                       <strong>
                         {rating % 1 === 0 ? `${rating}.0` : rating}
                       </strong>
