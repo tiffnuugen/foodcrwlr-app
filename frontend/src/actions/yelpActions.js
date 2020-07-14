@@ -33,4 +33,8 @@ export const saveRestaurant = (restaurant) => ({
   type: 'SAVE_RESTAURANT',
   restaurant
 });
+export const unsaveRestaurant = (id) => ({
+  type: 'UNSAVE_RESTAURANT',
+  id
+});
 });
