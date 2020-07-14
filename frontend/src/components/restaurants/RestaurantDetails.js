@@ -16,6 +16,23 @@ import {
 } from 'semantic-ui-react';
 
 class RestaurantDetails extends Component {
+  handleSave = () => {
+    const {
+      restaurantDetails: { id, name },
+      saveRestaurant,
+      currentUserId
+    } = this.props;
+    axios
+      .post('http://localhost:3001/saved_restaurants', {
+        saved_restaurant: {
+          name: name,
+          yelp_id: id,
+          user_id: currentUserId
+        }
+      })
+      .then((res) => saveRestaurant(res.data));
+  };
+
   renderHours = (hours) => {
     const parsedHours = hours[0].open;
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];

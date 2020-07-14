@@ -33,6 +33,12 @@ export default (state = initialState, action) => {
         restaurantDetails: action.restaurant,
         loading: false
       };
+    case 'SAVE_RESTAURANT':
+      console.log('restaurant saved!', action);
+      return {
+        ...state,
+        savedRestaurants: [...state.savedRestaurants, action.restaurant]
+      };
     case 'FETCH_SAVED_RESTAURANTS':
       console.log('saved restaurants fetched!', action);
       return {
