@@ -33,6 +33,16 @@ class RestaurantDetails extends Component {
       .then((res) => saveRestaurant(res.data));
   };
 
+  handleUnsave = () => {
+    const {
+      savedRest: { id },
+      unsaveRestaurant
+    } = this.props;
+    axios
+      .delete(`http://localhost:3001/saved_restaurants/${id}`)
+      .then((res) => unsaveRestaurant(res.data.id));
+  };
+
   renderHours = (hours) => {
     const parsedHours = hours[0].open;
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];

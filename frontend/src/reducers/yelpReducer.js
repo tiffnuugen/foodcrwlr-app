@@ -39,6 +39,14 @@ export default (state = initialState, action) => {
         ...state,
         savedRestaurants: [...state.savedRestaurants, action.restaurant]
       };
+    case 'UNSAVE_RESTAURANT':
+      console.log('restaurant unsaved!', action);
+      return {
+        ...state,
+        savedRestaurants: state.savedRestaurants.filter(
+          (rest) => rest.id !== action.id
+        )
+      };
     case 'FETCH_SAVED_RESTAURANTS':
       console.log('saved restaurants fetched!', action);
       return {
