@@ -40,6 +40,8 @@ class RestaurantDetailsContainer extends Component {
 
 const mapStateToProps = (state) => ({
   restaurantDetails: state.yelp.restaurantDetails,
+  savedRestaurants: state.yelp.savedRestaurants,
+  currentUserId: state.auth.user.id,
   loading: state.yelp.loading
 });
 
