@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Divider } from 'semantic-ui-react';
-import axios from 'axios';
 
 import RestaurantDetails from '../components/restaurants/RestaurantDetails';
 import ReviewsContainer from './ReviewsContainer';
@@ -14,14 +13,14 @@ import {
 } from '../actions/yelpActions';
 
 class RestaurantDetailsContainer extends Component {
-  fetchReviews = () => {
+  fetchSavedRestaurants = () => {
     axios
-      .get('http://localhost:3001/reviews')
-      .then((res) => this.props.fetchReviews(res.data));
+      .get('http://localhost:3001/saved_restaurants')
+      .then((res) => this.props.fetchSavedRestaurants(res.data));
   };
 
   componentDidMount() {
-    this.fetchReviews();
+    this.fetchSavedRestaurants();
   }
 
   render() {
@@ -42,15 +41,15 @@ class RestaurantDetailsContainer extends Component {
           />
         ) : (
           savedRestaurants.map((savedRest) => (
-        <RestaurantDetails
+            <RestaurantDetails
               key={savedRest.id}
               savedRest={savedRest}
-          restaurantDetails={this.props.restaurantDetails}
+              restaurantDetails={this.props.restaurantDetails}
               saveRestaurant={this.props.saveRestaurant}
               unsaveRestaurant={this.props.unsaveRestaurant}
               currentUserId={this.props.currentUserId}
-          loading={this.props.loading}
-        />
+              loading={this.props.loading}
+            />
           ))
         )}
         <Divider section />
