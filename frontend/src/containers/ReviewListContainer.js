@@ -3,13 +3,13 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import ReviewForm from '../components/reviews/ReviewForm';
-import Reviews from '../components/reviews/Reviews';
+import Reviews from '../components/reviews/ReviewList';
 
 import { deleteReview } from '../actions/apiActions';
 import { editReview } from '../actions/apiActions';
 import { fetchReviews } from '../actions/apiActions';
 
-class ReviewsContainer extends Component {
+class ReviewListContainer extends Component {
   fetchReviews = () => {
     axios
       .get('http://localhost:3001/reviews')
@@ -22,9 +22,9 @@ class ReviewsContainer extends Component {
 
   render() {
     return (
-      <div className='reviews container'>
+      <div className='review list container'>
         <ReviewForm />
-        <Reviews
+        <ReviewList
           reviews={this.props.reviews}
           restaurantId={this.props.restaurantId}
           currentUser={this.props.currentUser}
@@ -48,4 +48,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchReviews: (reviews) => dispatch(fetchReviews(reviews))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewsContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ReviewListContainer);

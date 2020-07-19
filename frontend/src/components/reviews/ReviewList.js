@@ -3,7 +3,7 @@ import { Divider, Header, Comment, Message } from 'semantic-ui-react';
 
 import Review from './Review';
 
-class Reviews extends Component {
+class ReviewList extends Component {
   render() {
     const reviews = this.props.reviews
       .filter((review) => review.restaurant_id === this.props.restaurantId)
@@ -56,4 +56,4 @@ class Reviews extends Component {
   }
 }
 
-export default Reviews;
+export default ReviewList;
