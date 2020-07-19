@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import ReviewForm from '../components/reviews/ReviewForm';
-import Reviews from '../components/reviews/ReviewList';
+import ReviewList from '../components/reviews/ReviewList';
 
 import { deleteReview } from '../actions/apiActions';
 import { editReview } from '../actions/apiActions';
