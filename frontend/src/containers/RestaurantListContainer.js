@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Restaurants from '../components/restaurants/Restaurants';
+import RestaurantList from '../components/restaurants/RestaurantList';
 import { showRestaurantDetails } from '../actions/yelpActions';
 
-class RestaurantsContainer extends Component {
+class RestaurantListContainer extends Component {
   render() {
     return (
-      <div className='restaurants container'>
-        <Restaurants
+      <div className='restaurant list container'>
+        <RestaurantList
           restaurants={this.props.restaurants}
           showRestaurantDetails={this.props.showRestaurantDetails}
         />
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RestaurantsContainer);
+)(RestaurantListContainer);

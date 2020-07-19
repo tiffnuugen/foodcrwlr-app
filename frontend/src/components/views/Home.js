@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Route, Redirect } from 'react-router-dom';
 
 import Header from './Header';
-import RestaurantsContainer from '../../containers/RestaurantsContainer';
+import RestaurantListContainer from '../../containers/RestaurantListContainer';
 import RestaurantDetailsContainer from '../../containers/RestaurantDetailsContainer';
 
 class Home extends Component {
@@ -63,7 +63,7 @@ class Home extends Component {
           handleLogout={this.handleLogout}
         />
         <Route path='/search'>
-          <RestaurantsContainer />
+          <RestaurantListContainer />
         </Route>
         <Route path='/restaurants/:id'>
           <RestaurantDetailsContainer />

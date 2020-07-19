@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Image, Icon, Rating } from 'semantic-ui-react';
 
-const Restaurants = ({ restaurants, showRestaurantDetails }) => {
+const RestaurantList = ({ restaurants, showRestaurantDetails }) => {
   return (
     <Card.Group itemsPerRow={5}>
       {restaurants.map(
@@ -41,4 +41,4 @@ const Restaurants = ({ restaurants, showRestaurantDetails }) => {
   );
 };
 
-export default Restaurants;
+export default RestaurantList;
