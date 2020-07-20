@@ -65,6 +65,12 @@ class Review extends Component {
     }
   };
 
+  handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:3001/reviews/${id}`)
+      .then((res) => this.props.deleteReview(res.data.id));
+  };
+
   renderDate = (createdAt) => {
     const date = new Date(createdAt).toLocaleDateString();
     return date;
@@ -80,20 +86,8 @@ class Review extends Component {
   };
 
   render() {
-    const {
-      id,
-      edited,
-      username,
-      createdAt,
-      currentUser,
-      deleteReview
-    } = this.props;
+    const { id, edited, username, createdAt, currentUser } = this.props;
     const { text, rating, isEditing } = this.state;
-    const handleDelete = (id) => {
-      axios
-        .delete(`http://localhost:3001/reviews/${id}`)
-        .then((res) => deleteReview(res.data.id));
-    };
     return (
       <>
         {isEditing ? (
@@ -123,10 +117,10 @@ class Review extends Component {
                 <Comment.Actions>
                   {currentUser === username && (
                     <>
-                      <Comment.Action onClick={() => this.handleEdit()}>
+                      <Comment.Action onClick={this.handleEdit}>
                         Done
                       </Comment.Action>
-                      <Comment.Action onClick={() => handleDelete(id)}>
+                      <Comment.Action onClick={() => this.handleDelete(id)}>
                         Delete
                       </Comment.Action>
                     </>
@@ -156,10 +150,10 @@ class Review extends Component {
               <Comment.Actions>
                 {currentUser === username && (
                   <>
-                    <Comment.Action onClick={() => this.toggleEdit()}>
+                    <Comment.Action onClick={this.toggleEdit}>
                       Edit
                     </Comment.Action>
-                    <Comment.Action onClick={() => handleDelete(id)}>
+                    <Comment.Action onClick={() => this.handleDelete(id)}>
                       Delete
                     </Comment.Action>
                   </>
