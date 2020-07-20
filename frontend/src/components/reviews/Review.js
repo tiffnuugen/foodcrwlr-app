@@ -34,11 +34,7 @@ class Review extends Component {
   handleEdit = () => {
     const { id, originalText, originalRating, editReview, edited } = this.props;
     const { text, rating } = this.state;
-    if (
-      originalText !== text ||
-      originalRating !== rating ||
-      (edited && (originalText === text || originalRating === rating))
-    ) {
+    if (originalText !== text || originalRating !== rating || edited) {
       axios
         .patch(`http://localhost:3001/reviews/${id}`, {
           review: {
