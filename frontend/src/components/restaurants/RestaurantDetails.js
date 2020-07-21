@@ -74,7 +74,7 @@ const RestaurantDetails = ({
                           circular
                           basic
                           icon='bookmark outline'
-                          onClick={this.handleUnsave}
+                        onClick={() => handleUnsave(savedRestaurant.id)}
                         />
                         <Label size='mini'>Saved</Label>
                       </div>
@@ -84,7 +84,7 @@ const RestaurantDetails = ({
                           circular
                           basic
                           icon='bookmark outline'
-                          onClick={this.handleSave}
+                        onClick={handleSave}
                         />
                         <Label size='mini'>Save</Label>
                       </div>
