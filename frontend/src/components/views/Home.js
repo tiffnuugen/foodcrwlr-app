@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, withRouter } from 'react-router-dom';
 
 import Header from './Header';
 import RestaurantListContainer from '../../containers/RestaurantListContainer';
 import RestaurantDetailsContainer from '../../containers/RestaurantDetailsContainer';
+
+import { fetchRestaurants } from '../../actions/yelpActions';
 
 class Home extends Component {
   state = {
@@ -84,6 +86,11 @@ class Home extends Component {
         <Header
           username={this.props.username}
           handleLogout={this.handleLogout}
+          handleSearchChange={this.handleSearchChange}
+          handleSubmit={this.handleSubmit}
+          term={this.state.term}
+          location={this.state.location}
+          loading={this.props.loading}
         />
         <Route path='/search'>
           <RestaurantListContainer />
@@ -97,7 +104,12 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  username: state.auth.user.username
+  username: state.auth.user.username,
+  loading: state.yelp.loading
 });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => ({
+  fetchRestaurants: (searchValues) => dispatch(fetchRestaurants(searchValues))
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
