@@ -83,13 +83,13 @@ class RestaurantDetailsContainer extends Component {
       <div className='ui text restaurant details container'>
             <RestaurantDetails
               restaurantDetails={this.props.restaurantDetails}
-              saveRestaurant={this.props.saveRestaurant}
-              unsaveRestaurant={this.props.unsaveRestaurant}
+          savedRestaurants={this.props.savedRestaurants}
+          handleSave={this.handleSave}
+          handleUnsave={this.handleUnsave}
+          renderHours={this.renderHours}
               currentUserId={this.props.currentUserId}
               loading={this.props.loading}
             />
-          ))
-        )}
         <Divider section />
         <ReviewsContainer />
       </div>
