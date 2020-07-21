@@ -20,6 +20,49 @@ class ReviewListContainer extends Component {
     this.fetchReviews();
   }
 
+  handleChange = (e) => {
+    this.setState({
+      text: e.target.value
+    });
+  };
+
+  handleRate = (e, { rating }) => {
+    this.setState({
+      rating
+    });
+  };
+
+  handleSubmit = async () => {
+    const { text, rating } = this.state;
+    const {
+      currentUserId,
+      restaurantId,
+      restaurantName,
+      yelpId,
+      addReview
+    } = this.props;
+
+    await axios.post('http://localhost:3001/restaurants', {
+      restaurant: {
+        name: restaurantName,
+        yelp_id: yelpId
+      }
+    });
+    const review = await axios.post('http://localhost:3001/reviews', {
+      review: {
+        text: text,
+        rating: rating,
+        user_id: currentUserId,
+        restaurant_id: restaurantId
+      }
+    });
+    addReview(review.data);
+    this.setState({
+      text: '',
+      rating: 0
+    });
+  };
+
   render() {
     return (
       <div className='review list container'>
