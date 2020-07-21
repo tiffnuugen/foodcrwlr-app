@@ -32,7 +32,7 @@ const RestaurantList = ({ restaurants, showRestaurantDetails }) => {
             </Card.Content>
             <Card.Content extra>
               <Icon name='phone' />
-              {!display_phone ? 'Not Available' : display_phone}
+              {display_phone ? display_phone : 'Not Available'}
             </Card.Content>
           </Card>
         )
