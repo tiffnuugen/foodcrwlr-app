@@ -34,7 +34,12 @@ const RestaurantDetails = ({
         price,
         hours
       }
-    } = this.props;
+}) => {
+  const savedRestaurant =
+    savedRestaurants.find(
+      (savedRest) =>
+        savedRest.yelp_id === id && savedRest.user_id === currentUserId
+    ) || !!undefined;
     return (
       <>
         {loading ? (
@@ -62,7 +67,7 @@ const RestaurantDetails = ({
                     >
                       {name}
                     </Header>
-                    {!!savedRest ? (
+                  {savedRestaurant ? (
                       <div className='save restaurant'>
                         <Button
                           active
