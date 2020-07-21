@@ -9,7 +9,30 @@ import RestaurantDetailsContainer from '../../containers/RestaurantDetailsContai
 
 class Home extends Component {
   state = {
-    redirect: false
+    redirect: false,
+    term: '',
+    location: ''
+  };
+
+  handleSearchChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { term, location } = this.state;
+    const { fetchRestaurants, history } = this.props;
+    fetchRestaurants({
+      term: term,
+      location: location
+    });
+    history.push(`/search?term=${term}&location=${location}`);
+    this.setState({
+      term: '',
+      location: ''
+    });
   };
 
   checkLoginStatus = () => {
