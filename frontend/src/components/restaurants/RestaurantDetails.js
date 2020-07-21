@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import {
   Item,
@@ -10,71 +9,15 @@ import {
   Dimmer,
   Icon,
   Segment,
-  List,
   Label,
   Button
 } from 'semantic-ui-react';
 
-class RestaurantDetails extends Component {
-  handleSave = () => {
-    const {
-      restaurantDetails: { id, name },
-      saveRestaurant,
-      currentUserId
-    } = this.props;
-    axios
-      .post('http://localhost:3001/saved_restaurants', {
-        saved_restaurant: {
-          name: name,
-          yelp_id: id,
-          user_id: currentUserId
-        }
-      })
-      .then((res) => saveRestaurant(res.data));
-  };
-
-  handleUnsave = () => {
-    const {
-      savedRest: { id },
-      unsaveRestaurant
-    } = this.props;
-    axios
-      .delete(`http://localhost:3001/saved_restaurants/${id}`)
-      .then((res) => unsaveRestaurant(res.data.id));
-  };
-
-  renderHours = (hours) => {
-    const parsedHours = hours[0].open;
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    let currentDay;
-
-    return parsedHours.map(({ start, end, day }) => {
-      const startHour = start.slice(0, 2);
-      const startMin = start.slice(2);
-      const endHour = end.slice(0, 2);
-      const endMin = end.slice(2);
-      let dayOfOperation = '';
-      const hoursOfOperation = `${
-        ((parseInt(startHour) + 11) % 12) + 1
-      }:${startMin} ${startHour >= 12 ? 'pm' : 'am'} - ${
-        ((parseInt(endHour) + 11) % 12) + 1
-      }:${endMin} ${endHour >= 12 ? 'pm' : 'am'}`;
-
-      if (currentDay !== day) {
-        currentDay = day;
-        dayOfOperation = days[day];
-      }
-
-      return (
-        <List.Item key={uuidv4()}>
-          <strong>{dayOfOperation}</strong> {hoursOfOperation}
-        </List.Item>
-      );
-    });
-  };
-
-  render() {
-    const {
+const RestaurantDetails = ({
+  handleSave,
+  handleUnsave,
+  renderHours,
+  savedRestaurants,
       loading,
       savedRest,
       restaurantDetails: {
