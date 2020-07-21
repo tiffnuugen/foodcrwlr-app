@@ -5,11 +5,17 @@ import { connect } from 'react-redux';
 import ReviewForm from '../components/reviews/ReviewForm';
 import ReviewList from '../components/reviews/ReviewList';
 
+import { addReview } from '../actions/apiActions';
 import { deleteReview } from '../actions/apiActions';
 import { editReview } from '../actions/apiActions';
 import { fetchReviews } from '../actions/apiActions';
 
 class ReviewListContainer extends Component {
+  state = {
+    text: '',
+    rating: 0
+  };
+
   fetchReviews = () => {
     axios
       .get('http://localhost:3001/reviews')
@@ -66,7 +72,13 @@ class ReviewListContainer extends Component {
   render() {
     return (
       <div className='review list container'>
-        <ReviewForm />
+        <ReviewForm
+          text={this.state.text}
+          rating={this.state.rating}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          handleRate={this.handleRate}
+        />
         <ReviewList
           reviews={this.props.reviews}
           restaurantId={this.props.restaurantId}
@@ -82,10 +94,14 @@ class ReviewListContainer extends Component {
 const mapStateToProps = (state) => ({
   reviews: state.api.reviews,
   restaurantId: state.yelp.restaurantDetails.id,
-  currentUser: state.auth.user.username
+  currentUserId: state.auth.user.id,
+  currentUser: state.auth.user.username,
+  restaurantName: state.yelp.restaurantDetails.name,
+  yelpId: state.yelp.restaurantDetails.id
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  addReview: (review) => dispatch(addReview(review)),
   deleteReview: (id) => dispatch(deleteReview(id)),
   editReview: (review) => dispatch(editReview(review)),
   fetchReviews: (reviews) => dispatch(fetchReviews(reviews))
