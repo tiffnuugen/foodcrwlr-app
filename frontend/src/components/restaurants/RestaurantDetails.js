@@ -19,7 +19,7 @@ const RestaurantDetails = ({
   renderHours,
   savedRestaurants,
       loading,
-      savedRest,
+  currentUserId,
       restaurantDetails: {
         id,
         name,
