@@ -74,24 +74,24 @@ class RestaurantDetailsContainer extends Component {
         <List.Item key={uuidv4()}>
           <strong>{dayOfOperation}</strong> {hoursOfOperation}
         </List.Item>
-    );
+      );
     });
   };
 
   render() {
     return (
       <div className='ui text restaurant details container'>
-            <RestaurantDetails
-              restaurantDetails={this.props.restaurantDetails}
+        <RestaurantDetails
+          restaurantDetails={this.props.restaurantDetails}
           savedRestaurants={this.props.savedRestaurants}
           handleSave={this.handleSave}
           handleUnsave={this.handleUnsave}
           renderHours={this.renderHours}
-              currentUserId={this.props.currentUserId}
-              loading={this.props.loading}
-            />
+          currentUserId={this.props.currentUserId}
+          loading={this.props.loading}
+        />
         <Divider section />
-        <ReviewsContainer />
+        <ReviewListContainer />
       </div>
     );
   }
