@@ -4,13 +4,27 @@ import { Link } from 'react-router-dom';
 
 import RestaurantForm from '../restaurants/RestaurantForm';
 
-const Header = ({ username, handleLogout }) => {
+const Header = ({
+  username,
+  handleLogout,
+  handleSearchChange,
+  handleSubmit,
+  term,
+  location,
+  loading
+}) => {
   return (
     <Menu secondary size='massive'>
       <H1 size='huge' color='teal' as={Link} to='/'>
         FoodCrwlr
       </H1>
-      <RestaurantForm />
+      <RestaurantForm
+        handleSearchChange={handleSearchChange}
+        handleSubmit={handleSubmit}
+        term={term}
+        location={location}
+        loading={loading}
+      />
       <Menu.Menu position='right'>
         <Dropdown item text={username}>
           <Dropdown.Menu>
@@ -20,7 +34,7 @@ const Header = ({ username, handleLogout }) => {
           </Dropdown.Menu>
         </Dropdown>
         <Menu.Item>
-          <Button onClick={() => handleLogout()}>Log out</Button>
+          <Button onClick={handleLogout}>Log out</Button>
         </Menu.Item>
       </Menu.Menu>
     </Menu>
