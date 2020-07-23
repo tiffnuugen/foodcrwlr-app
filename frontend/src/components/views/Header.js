@@ -28,7 +28,9 @@ const Header = ({
       <Menu.Menu position='right'>
         <Dropdown item text={username}>
           <Dropdown.Menu>
-            <Dropdown.Item>My Restaurants</Dropdown.Item>
+            <Dropdown.Item as={Link} to='/saved-restaurants'>
+              My Restaurants
+            </Dropdown.Item>
             <Dropdown.Item as={Link} to='/written-reviews'>
               My Reviews
             </Dropdown.Item>
