@@ -8,6 +8,7 @@ import RestaurantListContainer from '../../containers/RestaurantListContainer';
 import RestaurantDetailsContainer from '../../containers/RestaurantDetailsContainer';
 
 import { fetchRestaurants } from '../../actions/yelpActions';
+import WrittenReviewListContainer from '../../containers/WrittenReviewListContainer';
 
 class Home extends Component {
   state = {
@@ -97,6 +98,9 @@ class Home extends Component {
         </Route>
         <Route path='/restaurants/:id'>
           <RestaurantDetailsContainer />
+        </Route>
+        <Route path='/written-reviews'>
+          <WrittenReviewListContainer />
         </Route>
       </>
     );
