@@ -6,9 +6,10 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 import Header from './Header';
 import RestaurantListContainer from '../../containers/RestaurantListContainer';
 import RestaurantDetailsContainer from '../../containers/RestaurantDetailsContainer';
+import WrittenReviewListContainer from '../../containers/WrittenReviewListContainer';
+import SavedRestaurantListContainer from '../../containers/SavedRestaurantListContainer';
 
 import { fetchRestaurants } from '../../actions/yelpActions';
-import WrittenReviewListContainer from '../../containers/WrittenReviewListContainer';
 
 class Home extends Component {
   state = {
@@ -101,6 +102,9 @@ class Home extends Component {
         </Route>
         <Route path='/written-reviews'>
           <WrittenReviewListContainer />
+        </Route>
+        <Route path='/saved-restaurants'>
+          <SavedRestaurantListContainer />
         </Route>
       </>
     );
