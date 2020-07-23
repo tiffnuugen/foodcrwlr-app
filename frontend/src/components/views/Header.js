@@ -29,7 +29,9 @@ const Header = ({
         <Dropdown item text={username}>
           <Dropdown.Menu>
             <Dropdown.Item>My Restaurants</Dropdown.Item>
-            <Dropdown.Item>My Reviews</Dropdown.Item>
+            <Dropdown.Item as={Link} to='/written-reviews'>
+              My Reviews
+            </Dropdown.Item>
             <Dropdown.Item>My Friends</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
