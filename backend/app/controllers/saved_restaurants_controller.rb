@@ -23,7 +23,7 @@ class SavedRestaurantsController < ApplicationController
   private
   def saved_restaurant_params
     params.require(:saved_restaurant).permit({
-      details: [:id, :image_url, :name, :price, :rating, :display_phone, location: {display_address: []}, categories: [:alias, :title]]
+      details: [:id, :image_url, :name, :price, :rating, :display_phone, location: {display_address: []}, categories: [:title]]
     }, :user_id)
   end
 
