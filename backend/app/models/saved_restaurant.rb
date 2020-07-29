@@ -1,4 +1,4 @@
 class SavedRestaurant < ApplicationRecord
-  serialize :details, Hash
+  serialize :details
   belongs_to :user
 end
