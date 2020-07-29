@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import WrittenReviewList from '../components/reviews/WrittenReviewList';
 
 import { fetchReviews } from '../actions/apiActions';
-import { showRestaurantDetails } from '../actions/yelpActions';
 
 class WrittenReviewListContainer extends Component {
   fetchReviews = () => {
@@ -23,7 +22,6 @@ class WrittenReviewListContainer extends Component {
       <div className='ui text written review list container'>
         <WrittenReviewList
           reviews={this.props.reviews}
-          showRestaurantDetails={this.props.showRestaurantDetails}
           currentUserId={this.props.currentUserId}
         />
       </div>
@@ -37,8 +35,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchReviews: (reviews) => dispatch(fetchReviews(reviews)),
-  showRestaurantDetails: (id) => dispatch(showRestaurantDetails(id))
+  fetchReviews: (reviews) => dispatch(fetchReviews(reviews))
 });
 
 export default connect(
