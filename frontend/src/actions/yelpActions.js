@@ -9,7 +9,10 @@ export const fetchRestaurants = (searchValues) => {
         location: searchValues.location
       })
       .then((res) => {
-        dispatch({ type: 'ADD_RESTAURANTS', restaurants: res.data.businesses });
+        dispatch({
+          type: 'FETCH_RESTAURANTS',
+          restaurants: res.data.businesses
+        });
       })
       .catch((error) => console.log(error.response));
   };

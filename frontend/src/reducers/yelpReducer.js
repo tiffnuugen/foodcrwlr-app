@@ -13,8 +13,8 @@ export default (state = initialState, action) => {
         ...state,
         loading: true
       };
-    case 'ADD_RESTAURANTS':
-      console.log('restaurants added!', action);
+    case 'FETCH_RESTAURANTS':
+      console.log('restaurants fetched!', action);
       return {
         ...state,
         restaurants: action.restaurants,
