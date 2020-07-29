@@ -22,8 +22,11 @@ class SavedRestaurantsController < ApplicationController
 
   private
   def saved_restaurant_params
-    params.require(:saved_restaurant).permit(:name, :yelp_id, :user_id)
+    params.require(:saved_restaurant).permit({
+      details: [:id, :image_url, :name, :price, :rating, :display_phone, location: {display_address: []}, categories: [:alias, :title]]
+    }, :user_id)
   end
+
 
   def set_saved_restaurant
     @saved_restaurant = SavedRestaurant.find(params[:id])
