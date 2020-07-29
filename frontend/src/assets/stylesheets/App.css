@@ -1,6 +1,6 @@
 @import-normalize;
 
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -37,6 +37,12 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+/* app */
+.app {
+  margin: 2rem;
+  /* margin: 2rem 0 2rem 0; */
 }
 
 /* login/signup form */
@@ -47,9 +53,9 @@
 }
 
 /* menu */
-.ui.massive.secondary.menu {
-  margin: 2rem;
-}
+/* .ui.massive.secondary.menu {
+  margin: 0 2rem 2rem 2rem;
+} */
 
 /* right menu */
 .ui.menu:not(.vertical) .right.menu {
