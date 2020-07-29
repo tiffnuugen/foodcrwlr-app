@@ -38,7 +38,7 @@ const RestaurantDetails = ({
   const savedRestaurant =
     savedRestaurants.find(
       (savedRest) =>
-        savedRest.yelp_id === id && savedRest.user_id === currentUserId
+        savedRest.details.id === id && savedRest.user_id === currentUserId
     ) || !!undefined;
   return (
     <>
