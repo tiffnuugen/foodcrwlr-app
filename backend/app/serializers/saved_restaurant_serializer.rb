@@ -1,4 +1,4 @@
 class SavedRestaurantSerializer < ActiveModel::Serializer
-  attributes :id, :name, :yelp_id, :user_id
+  attributes :id, :details, :user_id
   belongs_to :user
 end
