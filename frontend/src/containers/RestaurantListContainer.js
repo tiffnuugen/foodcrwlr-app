@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import RestaurantList from '../components/restaurants/RestaurantList';
 
 import { fetchRestaurants } from '../actions/yelpActions';
 
 class RestaurantListContainer extends Component {
+  componentDidMount() {
+    const {
+      fetchRestaurants,
+      location: { state }
+    } = this.props;
+    fetchRestaurants(state);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      fetchRestaurants,
+      location: { search, state }
+    } = this.props;
+    if (prevProps.location.search !== search) {
+      fetchRestaurants(state);
+    }
+  }
+
   render() {
     return (
       <div className='restaurant list container'>
-        <RestaurantList
-          restaurants={this.props.restaurants}
-          showRestaurantDetails={this.props.showRestaurantDetails}
-        />
+        <RestaurantList restaurants={this.props.restaurants} />
       </div>
     );
   }
@@ -26,7 +42,6 @@ const mapDispatchToProps = (dispatch) => ({
   fetchRestaurants: (searchValues) => dispatch(fetchRestaurants(searchValues))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RestaurantListContainer);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(RestaurantListContainer)
+);
