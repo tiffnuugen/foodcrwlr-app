@@ -3,6 +3,7 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Divider, List } from 'semantic-ui-react';
 
 import RestaurantDetails from '../components/restaurants/RestaurantDetails';
@@ -11,7 +12,8 @@ import ReviewListContainer from './ReviewListContainer';
 import {
   saveRestaurant,
   unsaveRestaurant,
-  fetchSavedRestaurants
+  fetchSavedRestaurants,
+  showRestaurantDetails
 } from '../actions/yelpActions';
 
 class RestaurantDetailsContainer extends Component {
@@ -22,7 +24,14 @@ class RestaurantDetailsContainer extends Component {
   };
 
   componentDidMount() {
+    const {
+      showRestaurantDetails,
+      match: {
+        params: { id }
+      }
+    } = this.props;
     this.fetchSavedRestaurants();
+    showRestaurantDetails(id);
   }
 
   handleSave = () => {
@@ -103,10 +112,10 @@ const mapDispatchToProps = (dispatch) => ({
   saveRestaurant: (restaurant) => dispatch(saveRestaurant(restaurant)),
   unsaveRestaurant: (id) => dispatch(unsaveRestaurant(id)),
   fetchSavedRestaurants: (restaurants) =>
-    dispatch(fetchSavedRestaurants(restaurants))
+    dispatch(fetchSavedRestaurants(restaurants)),
+  showRestaurantDetails: (id) => dispatch(showRestaurantDetails(id))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RestaurantDetailsContainer);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(RestaurantDetailsContainer)
+);
