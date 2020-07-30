@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get :logged_in, to: 'sessions#logged_in'
   post '/search', to: 'yelp#search'
   post '/details', to: 'yelp#display'
+  post '/hot-and-new', to: 'yelp#hot_and_new'
   resources :sessions, only: [:index, :create]
   resources :reviews, only: [:index, :show, :create, :update, :destroy]
   resources :users, only: [:index, :show]
