@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Image, Icon, Rating } from 'semantic-ui-react';
 
-const RestaurantList = ({ restaurants }) => {
+const RestaurantList = ({ restaurants, loading }) => {
   return (
     <>
-      <h2>All Results</h2>
+      {!loading && <h2>All Results</h2>}
       <Card.Group itemsPerRow={5}>
         {restaurants.map(
           ({
