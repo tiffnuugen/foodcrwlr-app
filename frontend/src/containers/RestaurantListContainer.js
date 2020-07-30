@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import RestaurantList from '../components/restaurants/RestaurantList';
-import { showRestaurantDetails } from '../actions/yelpActions';
+
+import { fetchRestaurants } from '../actions/yelpActions';
 
 class RestaurantListContainer extends Component {
   render() {
@@ -22,7 +23,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  showRestaurantDetails: (id) => dispatch(showRestaurantDetails(id))
+  fetchRestaurants: (searchValues) => dispatch(fetchRestaurants(searchValues))
 });
 
 export default connect(
