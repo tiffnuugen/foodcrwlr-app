@@ -27,12 +27,10 @@ class Home extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { term, location } = this.state;
-    const { fetchRestaurants, history } = this.props;
-    fetchRestaurants({
+    this.props.history.push(`/search?term=${term}&location=${location}`, {
       term: term,
       location: location
     });
-    history.push(`/search?term=${term}&location=${location}`);
     this.setState({
       term: '',
       location: ''
