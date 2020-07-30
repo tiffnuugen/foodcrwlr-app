@@ -28,14 +28,18 @@ class RestaurantListContainer extends Component {
   render() {
     return (
       <div className='restaurant list container'>
-        <RestaurantList restaurants={this.props.restaurants} />
+        <RestaurantList
+          restaurants={this.props.restaurants}
+          loading={this.props.loading}
+        />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  restaurants: state.yelp.restaurants
+  restaurants: state.yelp.restaurants,
+  loading: state.yelp.loading
 });
 
 const mapDispatchToProps = (dispatch) => ({
