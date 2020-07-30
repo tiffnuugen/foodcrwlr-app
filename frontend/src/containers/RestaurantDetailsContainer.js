@@ -26,16 +26,11 @@ class RestaurantDetailsContainer extends Component {
   }
 
   handleSave = () => {
-    const {
-      restaurantDetails: { id, name },
-      saveRestaurant,
-      currentUserId
-    } = this.props;
+    const { restaurantDetails, saveRestaurant, currentUserId } = this.props;
     axios
       .post('http://localhost:3001/saved_restaurants', {
         saved_restaurant: {
-          name: name,
-          yelp_id: id,
+          details: restaurantDetails,
           user_id: currentUserId
         }
       })
