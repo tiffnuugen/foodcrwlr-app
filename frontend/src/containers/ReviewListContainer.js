@@ -13,7 +13,8 @@ import { fetchReviews } from '../actions/apiActions';
 class ReviewListContainer extends Component {
   state = {
     text: '',
-    rating: 0
+    rating: 0,
+    ratingError: ''
   };
 
   fetchReviews = () => {
@@ -48,25 +49,32 @@ class ReviewListContainer extends Component {
       addReview
     } = this.props;
 
-    await axios.post('http://localhost:3001/restaurants', {
-      restaurant: {
-        name: restaurantName,
-        yelp_id: yelpId
-      }
-    });
-    const review = await axios.post('http://localhost:3001/reviews', {
-      review: {
-        text: text,
-        rating: rating,
-        user_id: currentUserId,
-        restaurant_id: restaurantId
-      }
-    });
-    addReview(review.data);
-    this.setState({
-      text: '',
-      rating: 0
-    });
+    if (!rating) {
+      this.setState({
+        ratingError: "Can't be blank."
+      });
+    } else {
+      await axios.post('http://localhost:3001/restaurants', {
+        restaurant: {
+          name: restaurantName,
+          yelp_id: yelpId
+        }
+      });
+      const review = await axios.post('http://localhost:3001/reviews', {
+        review: {
+          text: text,
+          rating: rating,
+          user_id: currentUserId,
+          restaurant_id: restaurantId
+        }
+      });
+      addReview(review.data);
+      this.setState({
+        text: '',
+        rating: 0,
+        ratingError: ''
+      });
+    }
   };
 
   render() {
@@ -78,6 +86,7 @@ class ReviewListContainer extends Component {
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           handleRate={this.handleRate}
+          ratingError={this.state.ratingError}
         />
         <ReviewList
           reviews={this.props.reviews}

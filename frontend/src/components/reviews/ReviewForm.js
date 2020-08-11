@@ -1,12 +1,13 @@
 import React from 'react';
-import { Form, TextArea, Button, Icon, Rating } from 'semantic-ui-react';
+import { Form, TextArea, Button, Icon, Rating, Label } from 'semantic-ui-react';
 
 const ReviewForm = ({
   text,
   rating,
   handleSubmit,
   handleChange,
-  handleRate
+  handleRate,
+  ratingError
 }) => {
   return (
     <Form className='review' onSubmit={handleSubmit}>
@@ -18,6 +19,17 @@ const ReviewForm = ({
         maxRating={5}
         onRate={handleRate}
       />
+      {ratingError && (
+        <Label
+          className='rating error'
+          size='mini'
+          basic
+          color='red'
+          pointing='left'
+        >
+          {ratingError}
+        </Label>
+      )}
       <TextArea
         name='text'
         placeholder='Write a review...'

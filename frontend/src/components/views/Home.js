@@ -28,13 +28,17 @@ class Home extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { term, location } = this.state;
+    if (!location) {
+      this.setState({
+        locationError: "Can't be blank."
+      });
+    } else {
     this.props.history.push(`/search?term=${term}&location=${location}`, {
       term: term,
         isFetched: true
     });
     this.setState({
-      term: '',
-      location: ''
+        locationError: ''
     });
   };
 
@@ -94,6 +98,7 @@ class Home extends Component {
           location={this.state.location}
           loading={this.props.loading}
           isFetched={this.state.isFetched}
+          locationError={this.state.locationError}
         />
         <Route exact path='/'>
           <HotAndNewRestaurantListContainer />

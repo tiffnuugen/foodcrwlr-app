@@ -11,7 +11,9 @@ const Header = ({
   handleSubmit,
   term,
   location,
+  loading,
   isFetched,
+  locationError
 }) => {
   return (
     <Menu secondary size='massive'>
@@ -25,6 +27,7 @@ const Header = ({
         location={location}
         loading={loading}
         isFetched={isFetched}
+        locationError={locationError}
       />
       <Menu.Menu position='right'>
         <Dropdown item text={username}>
@@ -35,7 +38,7 @@ const Header = ({
             <Dropdown.Item as={Link} to='/written-reviews'>
               My Reviews
             </Dropdown.Item>
-            <Dropdown.Item>My Friends</Dropdown.Item>
+            {/* <Dropdown.Item>My Friends</Dropdown.Item> */}
           </Dropdown.Menu>
         </Dropdown>
         <Menu.Item>
