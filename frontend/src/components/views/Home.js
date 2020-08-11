@@ -15,7 +15,7 @@ class Home extends Component {
   state = {
     redirect: false,
     term: '',
-    location: ''
+    isFetched: false,
   };
 
   handleSearchChange = (e) => {
@@ -29,7 +29,7 @@ class Home extends Component {
     const { term, location } = this.state;
     this.props.history.push(`/search?term=${term}&location=${location}`, {
       term: term,
-      location: location
+        isFetched: true
     });
     this.setState({
       term: '',
@@ -63,6 +63,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.checkLoginStatus();
+        isFetched: state && true
   }
 
   handleLogout = () => {
@@ -91,6 +92,7 @@ class Home extends Component {
           term={this.state.term}
           location={this.state.location}
           loading={this.props.loading}
+          isFetched={this.state.isFetched}
         />
         <Route path='/search'>
           <RestaurantListContainer />

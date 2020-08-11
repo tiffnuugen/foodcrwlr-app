@@ -11,7 +11,7 @@ const Header = ({
   handleSubmit,
   term,
   location,
-  loading
+  isFetched,
 }) => {
   return (
     <Menu secondary size='massive'>
@@ -24,6 +24,7 @@ const Header = ({
         term={term}
         location={location}
         loading={loading}
+        isFetched={isFetched}
       />
       <Menu.Menu position='right'>
         <Dropdown item text={username}>

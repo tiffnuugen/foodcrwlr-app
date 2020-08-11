@@ -6,7 +6,7 @@ const RestaurantForm = ({
   handleSubmit,
   term,
   location,
-  loading
+  isFetched,
 }) => {
   return (
     <form className='search form container' onSubmit={handleSubmit}>
@@ -28,7 +28,7 @@ const RestaurantForm = ({
         value={location}
         onSearchChange={handleSearchChange}
       />
-      {loading ? (
+      {loading && isFetched ? (
         <Button circular size='large' loading icon='user' />
       ) : (
         <Button circular size='large' icon='search' />
