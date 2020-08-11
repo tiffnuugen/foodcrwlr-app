@@ -143,10 +143,14 @@ class Review extends Component {
               <Comment.Metadata>
                 {this.renderDate(createdAt)} at {this.renderTime(createdAt)}
               </Comment.Metadata>
-              <Comment.Text>
-                {text}
+              {text ? (
+                <Comment.Text>
+                  {text}
+                  <Comment.Metadata>{edited && '(edited)'}</Comment.Metadata>
+                </Comment.Text>
+              ) : (
                 <Comment.Metadata>{edited && '(edited)'}</Comment.Metadata>
-              </Comment.Text>
+              )}
               <Comment.Actions>
                 {currentUser === username && (
                   <>
