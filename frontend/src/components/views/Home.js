@@ -94,6 +94,9 @@ class Home extends Component {
           loading={this.props.loading}
           isFetched={this.state.isFetched}
         />
+        <Route exact path='/'>
+          <HotAndNewRestaurantListContainer />
+        </Route>
         <Route path='/search'>
           <RestaurantListContainer />
         </Route>
