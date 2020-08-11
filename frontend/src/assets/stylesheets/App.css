@@ -1,7 +1,8 @@
 @import-normalize;
 
-/* .App {
-  text-align: center;
+/* app */
+.app {
+  margin: 2rem;
 }
 
 /* login background image */
@@ -12,49 +13,61 @@
 /* signup background image */
 .ui.container.signup.background {
   background: url(../images/undraw_street_food_hm5i.svg) no-repeat center;
-  }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-/* app */
-.app {
-  margin: 2rem;
-  /* margin: 2rem 0 2rem 0; */
 }
 
 /* login/signup form */
-.ui.center.aligned.container {
+.ui.container.login,
+.ui.container.signup {
   height: 100vh;
   display: flex;
   align-items: center;
 }
 
+/* card */
+.ui.centered.card {
+  background: #f9fafb;
+}
+
+/* login/signup error */
+.ui.red.basic.label.login.error,
+.ui.red.basic.label.signup.error {
+  position: relative;
+  top: -0.9rem;
+  border: none;
+  float: left;
+  font-weight: 500;
+  padding: 0.5rem 0rem;
+  background: none !important;
+}
+
+/* warning icon */
+i.warning.circle.icon {
+  margin: 0 0.25rem 0 0;
+}
+
+/* login/signup text */
+p.login.text,
+p.signup.text {
+  text-align: center;
+}
+
+/* location error */
+.ui.red.basic.label.location.error {
+  border: none;
+  position: absolute;
+  font-weight: 500;
+}
+
+/* rating error */
+.ui.red.left.pointing.basic.label.rating.error {
+  position: relative;
+  bottom: 0.4rem;
+}
+
 /* menu */
-/* .ui.massive.secondary.menu {
-  margin: 0 2rem 2rem 2rem;
-} */
+.ui.massive.secondary.menu {
+  margin: 0 1rem 2rem 1rem;
+}
 
 /* right menu */
 .ui.menu:not(.vertical) .right.menu {
@@ -70,6 +83,11 @@
 /* search input */
 .ui.input {
   width: 30rem;
+}
+
+/* message */
+.ui.message {
+  margin: 0;
 }
 
 /* restaurant list container */
@@ -91,10 +109,6 @@
 button.ui.basic.circular.icon.button {
   display: flex;
 }
-/* reviews */
-.ui.comments {
-  margin: 1.5em 1.5em;
-}
 
 /* review form */
 form.ui.form.review {
@@ -113,4 +127,9 @@ button.ui.teal.basic.right.floated.button {
 /* textarea */
 .ui.form textarea {
   resize: none;
+}
+
+/* actions */
+.actions {
+  margin-top: 0.3rem;
 }
