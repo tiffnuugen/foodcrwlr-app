@@ -16,6 +16,7 @@ class Home extends Component {
   state = {
     redirect: false,
     term: '',
+    location: '',
     isFetched: false,
     locationError: ''
   };
@@ -34,13 +35,14 @@ class Home extends Component {
         locationError: "Can't be blank."
       });
     } else {
-    this.props.history.push(`/search?term=${term}&location=${location}`, {
-      term: term,
-        isFetched: true
-    });
-    this.setState({
+      this.props.history.push(`/search?term=${term}&location=${location}`, {
+        term: term,
+        location: location
+      });
+      this.setState({
         locationError: ''
-    });
+      });
+    }
   };
 
   checkLoginStatus = () => {
@@ -69,7 +71,28 @@ class Home extends Component {
 
   componentDidMount() {
     this.checkLoginStatus();
+    const {
+      location: { state }
+    } = this.props;
+    console.log('mounted', state);
+    this.setState({
+      term: state && state.term,
+      location: state && state.location
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      location: { state }
+    } = this.props;
+    console.log('updated', state);
+    if (prevProps.location.state !== state) {
+      this.setState({
+        term: (state && state.term) || '',
+        location: (state && state.location) || '',
         isFetched: state && true
+      });
+    }
   }
 
   handleLogout = () => {
