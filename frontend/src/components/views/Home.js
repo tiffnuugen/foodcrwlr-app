@@ -74,7 +74,6 @@ class Home extends Component {
     const {
       location: { state }
     } = this.props;
-    console.log('mounted', state);
     this.setState({
       term: state && state.term,
       location: state && state.location
@@ -85,7 +84,6 @@ class Home extends Component {
     const {
       location: { state }
     } = this.props;
-    console.log('updated', state);
     if (prevProps.location.state !== state) {
       this.setState({
         term: (state && state.term) || '',
@@ -103,8 +101,7 @@ class Home extends Component {
         this.setState({
           redirect: !this.state.redirect
         });
-      })
-      .catch((error) => console.log(error.response));
+      });
   };
 
   render() {

@@ -13,23 +13,19 @@ export const fetchRestaurants = (searchValues) => {
           type: 'FETCH_RESTAURANTS',
           restaurants: res.data.businesses
         });
-      })
-      .catch((error) => console.log(error.response));
+      });
   };
 };
 
 export const fetchHotAndNewRestaurants = () => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_HOT_AND_NEW_RESTAURANTS' });
-    axios
-      .get('http://localhost:3001/hot_and_new')
-      .then((res) => {
-        dispatch({
-          type: 'FETCH_HOT_AND_NEW_RESTAURANTS',
-          restaurants: res.data.businesses
-        });
-      })
-      .catch((error) => console.log(error.response));
+    axios.get('http://localhost:3001/hot_and_new').then((res) => {
+      dispatch({
+        type: 'FETCH_HOT_AND_NEW_RESTAURANTS',
+        restaurants: res.data.businesses
+      });
+    });
   };
 };
 
@@ -42,8 +38,7 @@ export const showRestaurantDetails = (id) => {
       })
       .then((res) => {
         dispatch({ type: 'SHOW_RESTAURANT_DETAILS', restaurant: res.data });
-      })
-      .catch((error) => console.log(error.response));
+      });
   };
 };
 

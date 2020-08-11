@@ -38,7 +38,6 @@ const Header = ({
             <Dropdown.Item as={Link} to='/written-reviews'>
               My Reviews
             </Dropdown.Item>
-            {/* <Dropdown.Item>My Friends</Dropdown.Item> */}
           </Dropdown.Menu>
         </Dropdown>
         <Menu.Item>

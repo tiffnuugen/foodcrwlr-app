@@ -93,7 +93,6 @@ class Review extends Component {
         {isEditing ? (
           <Form>
             <Comment>
-              {/* <Comment.Avatar src='' /> */}
               <Rating
                 clearable
                 size='huge'
@@ -131,7 +130,6 @@ class Review extends Component {
           </Form>
         ) : (
           <Comment>
-            {/* <Comment.Avatar src='' /> */}
             <Rating
               disabled
               size='large'

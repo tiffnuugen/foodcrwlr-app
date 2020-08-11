@@ -24,13 +24,11 @@ const RestaurantDetails = ({
     id,
     name,
     image_url,
-    is_closed,
     url,
     display_phone,
     categories,
     rating,
     location,
-    photos,
     price,
     hours
   }
@@ -160,28 +158,3 @@ const RestaurantDetails = ({
 };
 
 export default RestaurantDetails;
-
-// messy inline conditional rendering
-// hours[0].open.map(({ start, end, day }) => (
-//   <List.Item key={day}>
-//     <strong>{days[day]}</strong>
-
-// divide hours by 12 method
-//     {((parseInt(start.slice(0, 2)) + 11) % 12) + 1}:{start.slice(2)}{' '}
-//     {start.slice(0, 2) >= 12 ? 'pm' : 'am'}-{' '}
-//     {((parseInt(end.slice(0, 2)) + 11) % 12) + 1}:{end.slice(2)}{' '}
-//     {end.slice(0, 2) >= 12 ? 'pm' : 'am'}
-
-// OR
-
-//  subtract 12 from hours method
-//     {start.slice(0, 2) > 12
-//       ? Math.abs(start.slice(0, 2) - 12)
-//       : start.slice(0, 2)}
-//     :{start.slice(2)} {start.slice(0, 2) >= 12 ? 'pm' : 'am'} -{' '}
-//     {end.slice(0, 2) > 12 || end.slice(0, 2) === '00'
-//       ? Math.abs(end.slice(0, 2) - 12)
-//       : end.slice(1, 2)}
-//     :{end.slice(2)} {end.slice(0, 2) >= 12 ? 'pm' : 'am'}
-//   </List.Item>
-// ));
