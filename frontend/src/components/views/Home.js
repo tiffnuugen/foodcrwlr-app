@@ -8,6 +8,7 @@ import RestaurantListContainer from '../../containers/RestaurantListContainer';
 import RestaurantDetailsContainer from '../../containers/RestaurantDetailsContainer';
 import WrittenReviewListContainer from '../../containers/WrittenReviewListContainer';
 import SavedRestaurantListContainer from '../../containers/SavedRestaurantListContainer';
+import HotAndNewRestaurantListContainer from '../../containers/HotAndNewRestaurantListContainer';
 
 import { fetchRestaurants } from '../../actions/yelpActions';
 
