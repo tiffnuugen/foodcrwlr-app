@@ -53,6 +53,19 @@ export default (state = initialState, action) => {
         ...state,
         savedRestaurants: action.restaurants
       };
+    case 'LOADING_HOT_AND_NEW_RESTAURANTS':
+      console.log('loading hot and new restaurants...', action);
+      return {
+        ...state,
+        loading: true
+      };
+    case 'FETCH_HOT_AND_NEW_RESTAURANTS':
+      console.log('hot and new restaurants fetched!', action);
+      return {
+        ...state,
+        restaurants: action.restaurants,
+        loading: false
+      };
     default:
       return state;
   }
