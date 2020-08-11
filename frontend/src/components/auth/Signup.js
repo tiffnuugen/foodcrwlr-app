@@ -29,8 +29,7 @@ class Signup extends Component {
         {
           user: {
             username: username,
-            password: password,
-            passwordConfirmation: passwordConfirmation
+                password: password
           }
         },
         { withCredentials: true }
