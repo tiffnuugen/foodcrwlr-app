@@ -17,6 +17,7 @@ class Home extends Component {
     redirect: false,
     term: '',
     isFetched: false,
+    locationError: ''
   };
 
   handleSearchChange = (e) => {
