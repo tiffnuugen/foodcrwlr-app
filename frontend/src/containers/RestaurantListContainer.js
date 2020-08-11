@@ -43,7 +43,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchRestaurants: (searchValues) => dispatch(fetchRestaurants(searchValues))
+  fetchRestaurants: (searchValues) =>
+    dispatch(fetchRestaurants(searchValues || ''))
 });
 
 export default withRouter(
