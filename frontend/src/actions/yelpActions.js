@@ -18,6 +18,21 @@ export const fetchRestaurants = (searchValues) => {
   };
 };
 
+export const fetchHotAndNewRestaurants = () => {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_HOT_AND_NEW_RESTAURANTS' });
+    axios
+      .get('http://localhost:3001/hot_and_new')
+      .then((res) => {
+        dispatch({
+          type: 'FETCH_HOT_AND_NEW_RESTAURANTS',
+          restaurants: res.data.businesses
+        });
+      })
+      .catch((error) => console.log(error.response));
+  };
+};
+
 export const showRestaurantDetails = (id) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_RESTAURANT_DETAILS' });
