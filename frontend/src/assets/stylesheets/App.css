@@ -4,16 +4,15 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* login background image */
+.ui.container.login.background {
+  background: url(../images/undraw_tasting_de22.svg) no-repeat center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* signup background image */
+.ui.container.signup.background {
+  background: url(../images/undraw_street_food_hm5i.svg) no-repeat center;
   }
-}
 
 .App-header {
   background-color: #282c34;
