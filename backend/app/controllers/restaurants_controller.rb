@@ -1,14 +1,27 @@
 class RestaurantsController < ApplicationController
-  def search
-    res = Faraday.get('https://api.yelp.com/v3/businesses/search') do |req|
-      req.headers['Authorization'] = "Bearer #{ENV['API_KEY']}"
-      req.headers['Content-Type'] = 'application/json'
-      # req.params['location'] = 'nyc'
-    end
-    search_results = JSON.parse(res.body)
-    render json: search_results
-    # byebug
+  before_action :set_restaurant, only: :show
+
+  def index
+    restaurants = Restaurant.all
+    render json: restaurants, status: 200
   end
+
+  def show
+    render json: @restaurant, status: 200
+  end
+  
+  def create
+    restaurant = Restaurant.create(restaurant_params)
+    render json: restaurant, status: 201
+  end
+
+  private
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :yelp_id)
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find_by(yelp_id: params[:id])
+  end
+  
 end
-
-

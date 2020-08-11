@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import 'semantic-ui-css/semantic.min.css';
-import './assets/stylesheets/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -13,13 +12,13 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import { store, persistor } from './store';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>
-    </BrowserRouter>
-  </Provider>,
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

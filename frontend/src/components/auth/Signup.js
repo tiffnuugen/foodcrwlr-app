@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../../assets/stylesheets/Signup.css';
+import '../../assets/stylesheets/App.css';
 
-import { Button, Form, Card, Container } from 'semantic-ui-react';
+import { Button, Form, Card, Container, Label, Icon } from 'semantic-ui-react';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,7 +10,9 @@ class Signup extends Component {
     username: '',
     password: '',
     passwordConfirmation: '',
-    signupErrors: '',
+    usernameError: '',
+    passwordError: '',
+    passwordConfirmationError: '',
     redirect: false
   };
 
@@ -23,40 +25,78 @@ class Signup extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, password, passwordConfirmation } = this.state;
-    axios
-      .post(
-        'http://localhost:3001/registrations',
-        {
-          user: {
-            username: username,
-            password: password,
-            passwordConfirmation: passwordConfirmation
-          }
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        if (res.data.status === 'created') {
-          this.props.loginUser(res.data.user);
-          this.setState({
-            redirect: true
+    axios.get('http://localhost:3001/registrations').then((res) => {
+      const user =
+        res.data.users.find((user) => user.username === username) || '';
+      const isInvalid =
+        !username ||
+        username.length < 3 ||
+        user.username === username ||
+        !password ||
+        password.length < 3 ||
+        !passwordConfirmation ||
+        (username && password !== passwordConfirmation);
+      if (isInvalid) {
+        this.handleValidations(user);
+      } else {
+        axios
+          .post(
+            'http://localhost:3001/registrations',
+            {
+              user: {
+                username: username,
+                password: password
+              }
+            },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            if (res.data.status === 'created') {
+              this.props.loginUser(res.data.user);
+              this.setState({
+                username: '',
+                password: '',
+                passwordConfirmation: '',
+                redirect: !this.state.redirect
+              });
+            }
           });
-        }
-      })
-      .catch((error) => console.log(error.response));
+      }
+    });
+  };
+
+  handleValidations = (user) => {
+    const { username, password, passwordConfirmation } = this.state;
     this.setState({
-      username: '',
-      password: '',
-      passwordConfirmation: ''
+      usernameError:
+        (!username && "Can't be blank.") ||
+        (username.length < 3 &&
+          'Username must be at least 3 characters long.') ||
+        (user.username === username && 'Username has already been taken.'),
+      passwordError:
+        (!password && "Can't be blank.") ||
+        (password.length < 3 && 'Password must be at least 3 characters long.'),
+      passwordConfirmationError:
+        (!passwordConfirmation && "Can't be blank.") ||
+        (password !== passwordConfirmation && 'Password must match.')
     });
   };
 
   render() {
-    if (this.state.redirect) {
+    const {
+      username,
+      password,
+      passwordConfirmation,
+      redirect,
+      usernameError,
+      passwordError,
+      passwordConfirmationError
+    } = this.state;
+    if (redirect) {
       return <Redirect to='/' />;
     }
     return (
-      <Container className='signup' textAlign='center'>
+      <Container className='signup background'>
         <Card centered={true}>
           <Card.Content>
             <Form onSubmit={this.handleSubmit}>
@@ -65,32 +105,55 @@ class Signup extends Component {
                 iconPosition='left'
                 label='Username'
                 placeholder='Username'
+                autoComplete='new-username'
                 name='username'
-                value={this.state.username}
+                value={username}
                 onChange={this.handleChange}
               />
+              {usernameError && (
+                <Label className='signup error' basic color='red'>
+                  <Icon name='warning circle' />
+                  {usernameError}
+                </Label>
+              )}
               <Form.Input
                 icon='lock'
                 iconPosition='left'
                 label='Password'
                 type='password'
                 placeholder='Password'
+                autoComplete='new-password'
                 name='password'
-                value={this.state.password}
+                value={password}
                 onChange={this.handleChange}
               />
+              {passwordError && (
+                <Label className='signup error' basic color='red'>
+                  <Icon name='warning circle' />
+                  {passwordError}
+                </Label>
+              )}
               <Form.Input
                 icon='lock'
                 iconPosition='left'
                 label='Password Confirmation'
                 type='password'
                 placeholder='Password Confirmation'
+                autoComplete='new-password-confirmation'
                 name='passwordConfirmation'
-                value={this.state.passwordConfirmation}
+                value={passwordConfirmation}
                 onChange={this.handleChange}
               />
-              <Button type='submit' content='Sign up' primary />
-              <p>
+              {passwordConfirmationError && (
+                <Label className='signup error' basic color='red'>
+                  <Icon name='warning circle' />
+                  {passwordConfirmationError}
+                </Label>
+              )}
+              <Button fluid type='submit' color='teal'>
+                Sign up
+              </Button>
+              <p className='signup text'>
                 Already a user? <Link to='/login'>Log in</Link> here.
               </p>
             </Form>

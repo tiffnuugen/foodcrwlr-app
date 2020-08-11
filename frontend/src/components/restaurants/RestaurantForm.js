@@ -1,84 +1,50 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Search, Button } from 'semantic-ui-react';
+import React from 'react';
+import { Search, Button, Label, Icon } from 'semantic-ui-react';
 
-import { fetchRestaurants } from '../../actions/apiActions';
-
-class RestaurantForm extends Component {
-  state = {
-    term: '',
-    location: ''
-  };
-
-  handleSearchChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.fetchRestaurants({
-      term: this.state.term,
-      location: this.state.location
-    });
-    this.setState({
-      term: '',
-      location: ''
-    });
-  };
-
-  // componentDidMount() {
-  //   this.props.fetchRestaurants(this.state);
-  // }
-
-  // if the current loading state is
-  // NOT equal to the previous loading state,
-  // then UPDATE the page with the searched restaurants
-  // componentDidUpdate(prevProps, prevState) {
-  //   // console.log(prevState);
-  //   if (this.state !== prevState) {
-  //     this.props.fetchRestaurants(this.state);
-  //   }
-  // }
-
-  render() {
-    return (
-      <form className='search form container' onSubmit={this.handleSubmit}>
-        <Search
-          fluid
-          icon={null}
-          name='term'
-          placeholder='Search restaurants...'
-          showNoResults={false}
-          value={this.state.term}
-          onSearchChange={this.handleSearchChange}
-        />
+const RestaurantForm = ({
+  handleSearchChange,
+  handleSubmit,
+  term,
+  location,
+  loading,
+  isFetched,
+  locationError
+}) => {
+  return (
+    <form className='search form container' onSubmit={handleSubmit}>
+      <Search
+        fluid
+        icon={null}
+        name='term'
+        placeholder='Search restaurants...'
+        showNoResults={false}
+        value={term}
+        onSearchChange={handleSearchChange}
+      />
+      <div className='location input'>
         <Search
           fluid
           icon={null}
           name='location'
           placeholder='near this location...'
           showNoResults={false}
-          value={this.state.location}
-          onSearchChange={this.handleSearchChange}
+          value={location}
+          onSearchChange={handleSearchChange}
         />
-        {this.props.loading ? (
-          <Button circular size='large' loading icon='user' />
-        ) : (
-          <Button circular size='large' icon='search' />
+        {locationError && (
+          <Label className='location error' basic color='red'>
+            <Icon name='warning circle' />
+            {locationError}
+          </Label>
         )}
-      </form>
-    );
-  }
-}
+      </div>
+      {loading && isFetched ? (
+        <Button circular size='large' loading icon='user' />
+      ) : (
+        <Button circular size='large' icon='search' />
+      )}
+    </form>
+  );
+};
 
-const mapStateToProps = (state) => ({
-  loading: state.api.loading
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchRestaurants: (searchValues) => dispatch(fetchRestaurants(searchValues))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantForm);
+export default RestaurantForm;

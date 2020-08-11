@@ -1,23 +1,31 @@
 const initialState = {
-  restaurants: [],
-  loading: false
+  reviews: []
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'LOADING_RESTAURANTS':
-      console.log('restaurants loaded!', action);
+    case 'ADD_REVIEW':
+      return { ...state, reviews: [...state.reviews, action.review] };
+    case 'FETCH_REVIEWS':
+      return { ...state, reviews: action.reviews };
+    case 'DELETE_REVIEW':
       return {
         ...state,
-        restaurants: [...state.restaurants],
-        loading: true
+        reviews: state.reviews.filter((review) => review.id !== action.id)
       };
-    case 'ADD_RESTAURANTS':
-      console.log('restaurants added!', action);
+    case 'EDIT_REVIEW':
       return {
-        ...state.restaurants,
-        restaurants: action.restaurants,
-        loading: false
+        ...state,
+        reviews: state.reviews.map((review) =>
+          review.id === action.review.id
+            ? {
+                ...review,
+                text: action.review.text,
+                rating: action.review.rating,
+                edited: action.review.edited
+              }
+            : review
+        )
       };
     default:
       return state;

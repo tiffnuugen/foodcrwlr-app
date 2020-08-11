@@ -1,54 +1,72 @@
 @import-normalize;
 
-.App {
-  text-align: center;
+/* app */
+.app {
+  margin: 2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* login background image */
+.ui.container.login.background {
+  background: url(../images/undraw_tasting_de22.svg) no-repeat center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* signup background image */
+.ui.container.signup.background {
+  background: url(../images/undraw_street_food_hm5i.svg) no-repeat center;
 }
 
 /* login/signup form */
-.ui.center.aligned.container {
+.ui.container.login,
+.ui.container.signup {
   height: 100vh;
   display: flex;
   align-items: center;
 }
 
+/* card */
+.ui.centered.card {
+  background: #f9fafb;
+}
+
+/* login/signup error */
+.ui.red.basic.label.login.error,
+.ui.red.basic.label.signup.error {
+  position: relative;
+  top: -0.9rem;
+  border: none;
+  float: left;
+  font-weight: 500;
+  padding: 0.5rem 0rem;
+  background: none !important;
+}
+
+/* warning icon */
+i.warning.circle.icon {
+  margin: 0 0.25rem 0 0;
+}
+
+/* login/signup text */
+p.login.text,
+p.signup.text {
+  text-align: center;
+}
+
+/* location error */
+.ui.red.basic.label.location.error {
+  border: none;
+  position: absolute;
+  font-weight: 500;
+}
+
+/* rating error */
+.ui.red.left.pointing.basic.label.rating.error {
+  position: relative;
+  bottom: 0.4rem;
+}
+
 /* menu */
 .ui.massive.secondary.menu {
-  margin: 2rem;
+  margin: 0 1rem 2rem 1rem;
 }
 
 /* right menu */
@@ -67,7 +85,51 @@
   width: 30rem;
 }
 
-/* restaurants container */
-.restaurants.container {
+/* message */
+.ui.message {
+  margin: 0;
+}
+
+/* restaurant list container */
+.restaurant.list.container {
   margin: 0rem 2rem 0rem 2rem;
+}
+
+/* restaurant details container */
+.restaurant.details.container {
+  margin: 3rem 3rem;
+}
+
+/* save restaurant container */
+.save.restaurant {
+  float: right;
+}
+
+/* save restaurant button */
+button.ui.basic.circular.icon.button {
+  display: flex;
+}
+
+/* review form */
+form.ui.form.review {
+  margin-bottom: 6rem;
+}
+/* add review button */
+button.ui.teal.basic.right.floated.button {
+  margin-top: 0.5rem;
+}
+
+/* comment author */
+.ui.comments .comment a.author {
+  pointer-events: none;
+}
+
+/* textarea */
+.ui.form textarea {
+  resize: none;
+}
+
+/* actions */
+.actions {
+  margin-top: 0.3rem;
 }
