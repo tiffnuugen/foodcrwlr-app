@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Card, Image, Rating, Loader } from 'semantic-ui-react';
+import { Icon, Card, Image, Rating, Loader, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const HotAndNewRestaurantList = ({ restaurants, loading }) => {
@@ -15,9 +15,14 @@ const HotAndNewRestaurantList = ({ restaurants, loading }) => {
           </>
         )}
       </h2>
-      <Card.Group itemsPerRow={5}>
-        {restaurants &&
-          restaurants.map(
+      {!restaurants || !restaurants.length ? (
+        <Message size='large' compact>
+          <Message.Header>Something Went Wrong</Message.Header>
+          <p>Please try again.</p>
+        </Message>
+      ) : (
+        <Card.Group itemsPerRow={5}>
+          {restaurants.map(
             ({
               id,
               image_url,
@@ -52,7 +57,8 @@ const HotAndNewRestaurantList = ({ restaurants, loading }) => {
               </Card>
             )
           )}
-      </Card.Group>
+        </Card.Group>
+      )}
     </>
   );
 };
