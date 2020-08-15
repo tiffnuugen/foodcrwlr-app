@@ -15,7 +15,7 @@ const HotAndNewRestaurantList = ({ restaurants, loading }) => {
           </>
         )}
       </h2>
-      {!restaurants || !restaurants.length ? (
+      {!restaurants ? (
         <Message size='large' compact>
           <Message.Header>Something Went Wrong</Message.Header>
           <p>Please try again.</p>
