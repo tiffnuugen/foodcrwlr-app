@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 
-import Header from './Header';
-import RestaurantListContainer from '../../containers/RestaurantListContainer';
-import RestaurantDetailsContainer from '../../containers/RestaurantDetailsContainer';
-import WrittenReviewListContainer from '../../containers/WrittenReviewListContainer';
-import SavedRestaurantListContainer from '../../containers/SavedRestaurantListContainer';
-import HotAndNewRestaurantListContainer from '../../containers/HotAndNewRestaurantListContainer';
+import Header from '../src/Header';
+import RestaurantListContainer from './containers/RestaurantListContainer';
+import RestaurantDetailsContainer from './containers/RestaurantDetailsContainer';
+import WrittenReviewListContainer from './containers/WrittenReviewListContainer';
+import SavedRestaurantListContainer from './containers/SavedRestaurantListContainer';
+import HotAndNewRestaurantListContainer from './containers/HotAndNewRestaurantListContainer';
 
-import { fetchRestaurants } from '../../actions/yelpActions';
+import { fetchRestaurants } from './actions/yelpActions';
 
 class Home extends Component {
   state = {

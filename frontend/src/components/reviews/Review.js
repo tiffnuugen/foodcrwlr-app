@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Comment, Rating, Form } from 'semantic-ui-react';
-import TextareaAutosize from 'react-textarea-autosize';
 import axios from 'axios';
+
+import EditReviewForm from './EditReviewForm';
+import ReviewItem from './ReviewItem';
 
 class Review extends Component {
   constructor(props) {
@@ -91,78 +92,34 @@ class Review extends Component {
     return (
       <>
         {isEditing ? (
-          <Form>
-            <Comment>
-              <Rating
-                clearable
-                size='huge'
-                rating={rating}
-                maxRating={5}
-                onRate={this.handleRate}
-              />
-              <Comment.Content>
-                <Comment.Author as='a'>{username}</Comment.Author>
-                <Comment.Metadata>
-                  {this.renderDate(createdAt)} at {this.renderTime(createdAt)}
-                </Comment.Metadata>
-                <Comment.Text>
-                  <TextareaAutosize
-                    name='text'
-                    value={text}
-                    rows={1}
-                    onChange={this.handleChange}
-                  />
-                </Comment.Text>
-                <Comment.Actions>
-                  {currentUser === username && (
-                    <>
-                      <Comment.Action onClick={this.handleEdit}>
-                        Done
-                      </Comment.Action>
-                      <Comment.Action onClick={() => this.handleDelete(id)}>
-                        Delete
-                      </Comment.Action>
-                    </>
-                  )}
-                </Comment.Actions>
-              </Comment.Content>
-            </Comment>
-          </Form>
+          <EditReviewForm
+            id={id}
+            text={text}
+            rating={rating}
+            username={username}
+            createdAt={createdAt}
+            currentUser={currentUser}
+            handleRate={this.handleRate}
+            handleChange={this.handleChange}
+            renderDate={this.renderDate}
+            renderTime={this.renderTime}
+            handleEdit={this.handleEdit}
+            handleDelete={this.handleDelete}
+          />
         ) : (
-          <Comment>
-            <Rating
-              disabled
-              size='large'
-              defaultRating={rating}
-              maxRating={5}
-            />
-            <Comment.Content>
-              <Comment.Author as='a'>{username}</Comment.Author>
-              <Comment.Metadata>
-                {this.renderDate(createdAt)} at {this.renderTime(createdAt)}
-              </Comment.Metadata>
-              {text ? (
-                <Comment.Text>
-                  {text}
-                  <Comment.Metadata>{edited && '(edited)'}</Comment.Metadata>
-                </Comment.Text>
-              ) : (
-                <Comment.Metadata>{edited && '(edited)'}</Comment.Metadata>
-              )}
-              <Comment.Actions>
-                {currentUser === username && (
-                  <>
-                    <Comment.Action onClick={this.toggleEdit}>
-                      Edit
-                    </Comment.Action>
-                    <Comment.Action onClick={() => this.handleDelete(id)}>
-                      Delete
-                    </Comment.Action>
-                  </>
-                )}
-              </Comment.Actions>
-            </Comment.Content>
-          </Comment>
+          <ReviewItem
+            id={id}
+            edited={edited}
+            text={text}
+            rating={rating}
+            username={username}
+            createdAt={createdAt}
+            currentUser={currentUser}
+            renderDate={this.renderDate}
+            renderTime={this.renderTime}
+            toggleEdit={this.toggleEdit}
+            handleDelete={this.handleDelete}
+          />
         )}
       </>
     );

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Item, Rating, Message } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Item, Message } from 'semantic-ui-react';
+
+import WrittenReviewItem from './WrittenReviewItem';
 
 const WrittenReviewList = ({ reviews, currentUserId }) => {
   const writtenReviewsArr = reviews.filter(
@@ -12,17 +13,13 @@ const WrittenReviewList = ({ reviews, currentUserId }) => {
       {writtenReviewsArr.length > 0 ? (
         writtenReviewsArr.map(
           ({ id, text, rating, restaurant_id, restaurant: { name } }) => (
-            <Item key={id}>
-              <Item.Content>
-                <Item.Header as={Link} to={`/restaurants/${restaurant_id}`}>
-                  {name}
-                </Item.Header>
-                <Item.Extra>
-                  <Rating disabled defaultRating={rating} maxRating={5} />
-                </Item.Extra>
-                <Item.Meta>"{text}"</Item.Meta>
-              </Item.Content>
-            </Item>
+            <WrittenReviewItem
+              key={id}
+              text={text}
+              rating={rating}
+              restaurantId={restaurant_id}
+              name={name}
+            />
           )
         )
       ) : (

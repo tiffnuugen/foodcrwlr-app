@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card, Image, Icon, Rating, Message } from 'semantic-ui-react';
+import { Card, Message } from 'semantic-ui-react';
+
+import RestaurantCard from './RestaurantCard';
 
 const RestaurantList = ({ restaurants, loading }) => {
   return (
@@ -23,29 +24,16 @@ const RestaurantList = ({ restaurants, loading }) => {
               display_phone,
               categories
             }) => (
-              <Card key={id} as={Link} to={`/restaurants/${id}`}>
-                <Image src={image_url} alt='Not Available' height={300} />
-                <Card.Content>
-                  <Card.Header>{name}</Card.Header>
-                  <Card.Meta>
-                    {rating % 1 === 0 ? `${rating}.0` : rating}{' '}
-                    <Rating
-                      icon='star'
-                      defaultRating={rating}
-                      maxRating={5}
-                      disabled
-                    />
-                  </Card.Meta>
-                  <Card.Meta>
-                    {price ? price : categories[0].title} {price && '|'}{' '}
-                    {price && categories[0].title}
-                  </Card.Meta>
-                </Card.Content>
-                <Card.Content extra>
-                  <Icon name='phone' />
-                  {display_phone ? display_phone : 'Not Available'}
-                </Card.Content>
-              </Card>
+              <RestaurantCard
+                key={id}
+                id={id}
+                imageUrl={image_url}
+                name={name}
+                price={price}
+                rating={rating}
+                displayPhone={display_phone}
+                categories={categories}
+              />
             )
           )}
         </Card.Group>

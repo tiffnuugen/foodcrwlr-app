@@ -1,8 +1,9 @@
 import React from 'react';
-import { Menu, Dropdown, Button, Header as H1 } from 'semantic-ui-react';
+import { Menu, Header as H1 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import RestaurantForm from '../restaurants/RestaurantForm';
+import RestaurantForm from './components/restaurants/RestaurantForm';
+import DropdownMenu from './DropdownMenu';
 
 const Header = ({
   username,
@@ -29,21 +30,7 @@ const Header = ({
         isFetched={isFetched}
         locationError={locationError}
       />
-      <Menu.Menu position='right'>
-        <Dropdown item text={username}>
-          <Dropdown.Menu>
-            <Dropdown.Item as={Link} to='/saved-restaurants'>
-              My Restaurants
-            </Dropdown.Item>
-            <Dropdown.Item as={Link} to='/written-reviews'>
-              My Reviews
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Menu.Item>
-          <Button onClick={handleLogout}>Log out</Button>
-        </Menu.Item>
-      </Menu.Menu>
+      <DropdownMenu username={username} handleLogout={handleLogout} />
     </Menu>
   );
 };
