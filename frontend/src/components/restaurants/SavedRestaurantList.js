@@ -1,7 +1,7 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { Link } from 'react-router-dom';
-import { Item, Rating, Icon, Message } from 'semantic-ui-react';
+import { Item, Message } from 'semantic-ui-react';
+
+import SavedRestaurantItem from './SavedRestaurantItem';
 
 const SavedRestaurantList = ({ savedRestaurants, currentUserId }) => {
   const savedRestsArr = savedRestaurants.filter(
@@ -24,42 +24,17 @@ const SavedRestaurantList = ({ savedRestaurants, currentUserId }) => {
               display_phone
             }
           }) => (
-            <Item key={id}>
-              <Item.Image src={image_url} />
-              <Item.Content>
-                <Item.Header as={Link} to={`/restaurants/${id}`}>
-                  {name}
-                </Item.Header>
-                <Item.Meta>
-                  {categories ? categories[0].title : 'Not Available'}
-                </Item.Meta>
-                <Item.Meta>
-                  {price &&
-                    price
-                      .split('')
-                      .map(() => (
-                        <Icon key={uuidv4()} fitted name='dollar sign' />
-                      ))}{' '}
-                  {price && '|'}{' '}
-                  <strong>{rating % 1 === 0 ? `${rating}.0` : rating}</strong>
-                  <Rating disabled defaultRating={rating} maxRating={5} />
-                </Item.Meta>
-                <Item.Description>
-                  <strong>
-                    {location
-                      ? location.display_address.map(
-                          (item, index) => `${index ? ', ' : ''}${item}`
-                        )
-                      : 'Not Available'}
-                  </strong>
-                </Item.Description>
-                <Item.Extra>
-                  <strong>
-                    {display_phone ? display_phone : 'Not Available'}
-                  </strong>
-                </Item.Extra>
-              </Item.Content>
-            </Item>
+            <SavedRestaurantItem
+              key={id}
+              id={id}
+              imageUrl={image_url}
+              name={name}
+              rating={rating}
+              price={price}
+              categories={categories}
+              location={location}
+              displayPhone={display_phone}
+            />
           )
         )
       ) : (

@@ -5,7 +5,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
-import Home from './components/views/Home';
+import Home from '../src/Home';
 
 import { loginUser, logoutUser } from './actions/authActions';
 
