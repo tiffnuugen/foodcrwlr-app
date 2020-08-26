@@ -17,6 +17,24 @@ import {
 } from '../actions/yelpActions';
 
 class RestaurantDetailsContainer extends Component {
+  state = {
+    count: 0
+  };
+
+  addOne = () => {
+    const oneMore = this.state.count + 1;
+    this.setState({
+      count: oneMore
+    });
+  };
+
+  minusOne = () => {
+    const oneLess = this.state.count - 1;
+    this.setState({
+      count: oneLess
+    });
+  };
+
   fetchSavedRestaurants = () => {
     axios
       .get('http://localhost:3001/saved_restaurants')
@@ -93,6 +111,9 @@ class RestaurantDetailsContainer extends Component {
           renderHours={this.renderHours}
           currentUserId={this.props.currentUserId}
           loading={this.props.loading}
+          count={this.state.count}
+          addOne={this.addOne}
+          minusOne={this.minusOne}
         />
         <Divider section />
         <ReviewListContainer />

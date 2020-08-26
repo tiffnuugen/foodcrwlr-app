@@ -10,6 +10,9 @@ const RestaurantDetails = ({
   savedRestaurants,
   loading,
   currentUserId,
+  count,
+  addOne,
+  minusOne,
   restaurantDetails: {
     id,
     name,
@@ -46,6 +49,9 @@ const RestaurantDetails = ({
           renderHours={renderHours}
           savedRestaurants={savedRestaurants}
           currentUserId={currentUserId}
+          count={count}
+          addOne={addOne}
+          minusOne={minusOne}
         />
       )}
     </>

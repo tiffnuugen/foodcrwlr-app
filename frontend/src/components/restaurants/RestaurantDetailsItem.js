@@ -27,7 +27,10 @@ const RestaurantDetailsItem = ({
   handleUnsave,
   renderHours,
   savedRestaurants,
-  currentUserId
+  currentUserId,
+  count,
+  addOne,
+  minusOne
 }) => {
   const savedRestaurant =
     savedRestaurants.find(
@@ -50,6 +53,11 @@ const RestaurantDetailsItem = ({
               >
                 {name}
               </Header>
+              {count ? (
+                <button onClick={minusOne}>{count}</button>
+              ) : (
+                <button onClick={addOne}>{count}</button>
+              )}
               <SaveRestaurantButton
                 savedRestaurant={savedRestaurant}
                 handleSave={handleSave}
